@@ -1,6 +1,9 @@
 /trello-cli
 /cmdgen
 /dedup
+/bin/
+/dist/
+/.tools/
 *.test
 *.out
 .DS_Store

@@ -1,0 +1,87 @@
+# goreleaser config — see https://goreleaser.com
+version: 2
+
+project_name: trello-cli
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: trello-cli
+    main: ./cmd/trello-cli
+    binary: trello-cli
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X github.com/mrfansi/trello-cli/internal/version.Version={{.Version}}
+      - -X github.com/mrfansi/trello-cli/internal/version.Commit={{.ShortCommit}}
+      - -X github.com/mrfansi/trello-cli/internal/version.Date={{.Date}}
+
+archives:
+  - id: trello-cli
+    name_template: >-
+      {{ .ProjectName }}_{{ .Version }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+    formats:
+      - tar.gz
+    format_overrides:
+      - goos: windows
+        formats:
+          - zip
+    files:
+      - README.md
+      - LICENSE*
+      - docs/USAGE.md
+      - docs/COMMANDS.md
+      - skills/trello-cli/SKILL.md
+
+checksum:
+  name_template: "checksums.txt"
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-snapshot"
+
+changelog:
+  sort: asc
+  use: github
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+      - "^chore:"
+      - "Merge pull request"
+      - "Merge branch"
+
+release:
+  draft: false
+  prerelease: auto
+  name_template: "v{{.Version}}"
+  footer: |
+    ## Install
+
+    **Homebrew (macOS / Linux):**
+    ```bash
+    brew install mrfansi/tap/trello-cli
+    ```
+
+    **go install:**
+    ```bash
+    go install github.com/mrfansi/trello-cli/cmd/trello-cli@v{{.Version}}
+    ```
+
+    **From source:**
+    ```bash
+    git clone https://github.com/mrfansi/trello-cli && cd trello-cli && make
+    ```

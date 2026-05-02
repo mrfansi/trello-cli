@@ -14,10 +14,49 @@ to Trello, plus a daily-driver CLI for humans.
 
 ## Install
 
+Pick whichever fits your environment.
+
+### Homebrew (macOS / Linux)
+
 ```bash
-make install
-# or
+brew install mrfansi/tap/trello-cli
+```
+
+### `go install`
+
+Requires Go ≥ the version pinned in [`go.mod`](go.mod).
+
+```bash
 go install github.com/mrfansi/trello-cli/cmd/trello-cli@latest
+```
+
+The binary lands in `$GOBIN` (or `$GOPATH/bin`). Add that to `PATH` if
+it isn't already.
+
+### Pre-built binaries
+
+Download the archive for your platform from the
+[GitHub Releases page](https://github.com/mrfansi/trello-cli/releases)
+and drop the `trello-cli` binary on your `PATH`. Releases include
+checksums.
+
+### From source
+
+```bash
+git clone https://github.com/mrfansi/trello-cli.git
+cd trello-cli
+make            # builds ./bin/trello-cli
+make install    # or: install into $GOBIN
+```
+
+`make` is the one-liner. It embeds `git describe`-derived version
+metadata via `-ldflags`. Run `make help` for every available target.
+
+### Verify
+
+```bash
+trello-cli --version
+trello-cli me        # exercises auth (see below)
 ```
 
 ## Auth
@@ -89,12 +128,31 @@ filtering.
 ## Development
 
 ```bash
-make build       # compile binary
+make             # default goal: builds ./bin/trello-cli with embedded version
+make help        # list all targets
 make test        # go test -race -cover ./...
-make vet         # go vet ./...
+make ci          # vet + test (used in CI)
+make fmt         # gofmt -s -w .
+make lint        # golangci-lint (auto-installs if needed via `make tools`)
 make gen         # regenerate Trello client from openapi.json
-make gen-cmds    # regenerate cobra commands from openapi.json
+make gen-cmds    # regenerate cobra commands + docs/COMMANDS.md from openapi.json
+make snapshot    # local goreleaser snapshot (requires goreleaser)
+make clean       # remove ./bin and ./dist
 ```
+
+### Releasing
+
+Tag a version on `main`:
+
+```bash
+scripts/release.sh v0.1.0
+```
+
+The script enforces a clean tree, the `main` branch, and an
+unused tag, then pushes the tag. The
+[release workflow](.github/workflows/release.yml) runs `goreleaser`
+which builds linux/darwin/windows × amd64/arm64 archives, checksums,
+and a GitHub Release.
 
 ## Testing
 
@@ -132,8 +190,15 @@ internal/client/            # auth-injecting HTTP factory
 internal/config/            # viper-backed credential loader
 internal/cmdutil/           # shared command helpers (context, decode)
 internal/output/            # JSON / table renderer (used by `me`)
+internal/version/           # build-time version metadata (-ldflags)
 internal/trello/            # typed generated client
 tools/dedup/                # client codegen post-processor
-tools/cmdgen/               # cobra command generator
+tools/cmdgen/               # cobra command + docs generator
+docs/USAGE.md               # human usage guide
+docs/COMMANDS.md            # full command reference (auto-generated)
+skills/trello-cli/          # OpenClaw / AgentSkills SKILL.md
+scripts/release.sh          # release tag helper
+.goreleaser.yaml            # multi-platform release config
+.github/workflows/          # CI + release pipelines
 openapi.json                # Trello OpenAPI spec
 ```
