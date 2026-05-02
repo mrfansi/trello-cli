@@ -1,6 +1,7 @@
 # trello-cli
 
-Curated Go CLI over the Trello REST API.
+Go CLI over the Trello REST API. Resource commands are auto-generated
+from `openapi.json`, giving 100% endpoint coverage out of the box.
 
 ## Install
 
@@ -28,53 +29,62 @@ token: ...
 
 ## Usage
 
+Command shape: `trello-cli <resource> <operation> [args] [flags]`.
+Operation names mirror the OpenAPI `operationId` (kebab-case
+`<method>-<path>`).
+
 ```bash
-trello-cli me                                  # show authenticated user
-trello-cli board ls                            # list your boards
-trello-cli board get <board-id>
-trello-cli board create "My Board"
-
-trello-cli list ls --board <board-id>
-trello-cli list create "Backlog" --board <board-id>
-trello-cli list archive <list-id>
-
-trello-cli card ls --list <list-id>
-trello-cli card ls --board <board-id>
-trello-cli card create "Task" --list <list-id> --desc "details"
-trello-cli card update <card-id> --name "New name" --closed
-trello-cli card rm <card-id>
-
-trello-cli checklist ls --card <card-id>
-trello-cli checklist create "Steps" --card <card-id>
-
-trello-cli member get <username>
+trello-cli me                                          # auth check (alias)
+trello-cli boards get-boards-id <board-id>             # GET /boards/{id}
+trello-cli boards get-boards-id-labels <board-id>      # GET /boards/{id}/labels
+trello-cli boards post-boards --name "New" --idOrganization <org-id>
+trello-cli cards post-cards --idList <list-id> --name "Task"
+trello-cli cards put-cards-id <card-id> --data '{"name":"Renamed"}'
+trello-cli cards delete-cards-id <card-id>
+trello-cli lists get-lists-id-cards <list-id>
+trello-cli labels get-labels-id <label-id>
+trello-cli members get-members-id me
+trello-cli search get-search --query "term" --modelTypes cards
 ```
 
-Add `--json` to any command for raw JSON output.
+Top-level groups: `actions`, `applications`, `batch`, `boards`,
+`cards`, `checklists`, `customFields`, `emoji`, `enterprises`,
+`labels`, `lists`, `members`, `notifications`, `organizations`,
+`plugins`, `search`, `tokens`, `webhooks`.
 
-### Raw passthrough (any endpoint)
+`trello-cli <group> --help` lists every operation in that group.
+Every operation `--help` lists path args, query flags, and (for
+mutating endpoints) the `--data` body flag.
 
-For endpoints not yet wrapped, use `raw`:
+### Raw passthrough
+
+For ad-hoc requests or quick experimentation:
 
 ```bash
 trello-cli raw GET /members/me
 trello-cli raw GET /boards/{id}/labels --path id=abc --query limit=10
-trello-cli raw POST /cards --query idList=xyz --query name="New card"
+trello-cli raw POST /cards --query idList=xyz --query name="New"
 trello-cli raw PUT /cards/{id} --path id=abc --data @body.json
 trello-cli raw DELETE /cards/{id} --path id=abc
 ```
 
 Flags: `--path key=value`, `--query key=value`, `--header key=value`,
-`--data <json|@file>`. Auth (key+token) is auto-injected. Output is
-the raw response body; non-2xx prints status to stderr and exits 1.
+`--data <json|@file>`. Auth is auto-injected. Output is the raw
+response body; non-2xx prints status to stderr and exits 1.
+
+### Output
+
+All resource and `raw` commands emit raw JSON. Pipe through `jq` for
+filtering.
 
 ## Development
 
 ```bash
-make build      # compile binary
-make test       # go test -race -cover ./...
-make vet        # go vet ./...
-make gen        # regenerate Trello client from openapi.json
+make build       # compile binary
+make test        # go test -race -cover ./...
+make vet         # go vet ./...
+make gen         # regenerate Trello client from openapi.json
+make gen-cmds    # regenerate cobra commands from openapi.json
 ```
 
 ## Testing
@@ -83,37 +93,38 @@ make gen        # regenerate Trello client from openapi.json
 go test -race -cover ./internal/... ./tools/...
 ```
 
-Logic-bearing packages (`config`, `output`, `cmdutil`, `tools/dedup`)
-have unit coverage. Cobra command wiring and the auth-injecting HTTP
-factory are exercised via the live smoke flow (`trello-cli me`,
-`board ls`, etc.) once credentials are configured.
+Logic-bearing packages (`config`, `output`, `cmdutil`, `commands`,
+`tools/dedup`) have unit coverage. Generated command files are
+mechanical wrappers around `auto.execRaw`; coverage of `execRaw`
+(via `commands.rawCmd`) exercises the same code path.
 
-## Regenerate client
+## Regeneration pipelines
 
-```bash
-make gen
-```
+Two independent generators run from `openapi.json`:
 
-The generator runs `oapi-codegen` then a small post-processor (`tools/dedup`)
-that:
+1. **Typed Go client** (`make gen`) — runs `oapi-codegen` then
+   `tools/dedup` to remove duplicate type aliases and replace
+   anonymous-union path params with plain `string`.
+2. **Cobra commands** (`make gen-cmds`) — runs `tools/cmdgen` which
+   walks every `paths.<path>.<method>` and emits one cobra subcommand
+   per operation into `internal/commands/auto/`.
 
-- removes duplicate type declarations from clashing operationIds in the spec
-- replaces anonymous-union path params (`struct { union json.RawMessage }`)
-  with plain `string` so endpoints like `GetMembersId` are callable.
-
-Without that pass, the generated code does not compile and the affected
-endpoints serialize empty path segments.
+The typed client is currently retained for callers that want
+strongly-typed access; the CLI itself dispatches every request via
+the raw HTTP path so coverage stays in lockstep with the spec.
 
 ## Layout
 
 ```
-cmd/trello-cli/      # main entrypoint
-internal/commands/   # cobra subcommands (board, list, card, checklist, member, me)
-internal/client/     # auth-injecting wrapper around generated client
-internal/config/     # viper-backed config (env + ~/.trello-cli/config.yaml)
-internal/cmdutil/    # shared command helpers (context, decode)
-internal/output/     # table + json renderer
-internal/trello/     # generated client (do not hand-edit)
-tools/dedup/         # codegen post-processor
-openapi.json         # Trello OpenAPI spec
+cmd/trello-cli/             # main entrypoint
+internal/commands/          # cobra root + raw + me alias
+internal/commands/auto/     # generated resource subcommand groups
+internal/client/            # auth-injecting HTTP factory
+internal/config/            # viper-backed credential loader
+internal/cmdutil/           # shared command helpers (context, decode)
+internal/output/            # JSON / table renderer (used by `me`)
+internal/trello/            # typed generated client
+tools/dedup/                # client codegen post-processor
+tools/cmdgen/               # cobra command generator
+openapi.json                # Trello OpenAPI spec
 ```

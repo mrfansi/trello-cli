@@ -1,6 +1,9 @@
 package commands
 
-import "github.com/spf13/cobra"
+import (
+	"github.com/mrfansi/trello-cli/internal/commands/auto"
+	"github.com/spf13/cobra"
+)
 
 var jsonOutput bool
 
@@ -8,20 +11,14 @@ func Root() *cobra.Command {
 	root := &cobra.Command{
 		Use:           "trello-cli",
 		Short:         "Trello CLI",
-		Long:          "Curated CLI over the Trello REST API.\n\nAuth: TRELLO_API_KEY + TRELLO_TOKEN env vars, or ~/.trello-cli/config.yaml.",
+		Long:          "CLI over the Trello REST API. Resource groups are auto-generated from openapi.json. Use `raw` for ad-hoc requests.\n\nAuth: TRELLO_API_KEY + TRELLO_TOKEN env vars, or ~/.trello-cli/config.yaml.",
 		SilenceUsage:  true,
 		SilenceErrors: true,
 	}
-	root.PersistentFlags().BoolVar(&jsonOutput, "json", false, "Output raw JSON")
+	root.PersistentFlags().BoolVar(&jsonOutput, "json", false, "Output raw JSON (no-op for raw/auto commands which always emit JSON)")
 
-	root.AddCommand(
-		boardCmd(),
-		listCmd(),
-		cardCmd(),
-		checklistCmd(),
-		memberCmd(),
-		meCmd(),
-		rawCmd(),
-	)
+	root.AddCommand(meCmd())
+	root.AddCommand(rawCmd())
+	root.AddCommand(auto.Groups()...)
 	return root
 }

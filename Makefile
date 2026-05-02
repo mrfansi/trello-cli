@@ -2,7 +2,7 @@ BIN := trello-cli
 CLIENT := internal/trello/client.gen.go
 SPEC := openapi.json
 
-.PHONY: build gen vet test clean install
+.PHONY: build gen gen-cmds vet test clean install
 
 build:
 	go build -o $(BIN) ./cmd/trello-cli
@@ -10,6 +10,10 @@ build:
 gen:
 	cd internal/trello && oapi-codegen -config oapi-config.yaml ../../$(SPEC)
 	go run ./tools/dedup ./$(CLIENT)
+	go build ./...
+
+gen-cmds:
+	go run ./tools/cmdgen $(SPEC) internal/commands/auto
 	go build ./...
 
 vet:
