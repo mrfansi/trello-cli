@@ -21,6 +21,7 @@ func Root() *cobra.Command {
 		checklistCmd(),
 		memberCmd(),
 		meCmd(),
+		rawCmd(),
 	)
 	return root
 }

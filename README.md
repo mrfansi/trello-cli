@@ -52,6 +52,22 @@ trello-cli member get <username>
 
 Add `--json` to any command for raw JSON output.
 
+### Raw passthrough (any endpoint)
+
+For endpoints not yet wrapped, use `raw`:
+
+```bash
+trello-cli raw GET /members/me
+trello-cli raw GET /boards/{id}/labels --path id=abc --query limit=10
+trello-cli raw POST /cards --query idList=xyz --query name="New card"
+trello-cli raw PUT /cards/{id} --path id=abc --data @body.json
+trello-cli raw DELETE /cards/{id} --path id=abc
+```
+
+Flags: `--path key=value`, `--query key=value`, `--header key=value`,
+`--data <json|@file>`. Auth (key+token) is auto-injected. Output is
+the raw response body; non-2xx prints status to stderr and exits 1.
+
 ## Development
 
 ```bash
