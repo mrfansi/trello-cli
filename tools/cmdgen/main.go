@@ -77,13 +77,53 @@ var httpMethods = map[string]bool{
 }
 
 func main() {
-	if len(os.Args) != 3 {
-		fmt.Fprintln(os.Stderr, "usage: cmdgen <openapi.json> <out-dir>")
+	if len(os.Args) < 3 {
+		fmt.Fprintln(os.Stderr, "usage: cmdgen <openapi.json> <code-out-dir> [--docs <docs-path>]")
 		os.Exit(2)
 	}
 	specPath := os.Args[1]
 	outDir := os.Args[2]
+	docsPath := ""
+	for i := 3; i < len(os.Args); i++ {
+		if os.Args[i] == "--docs" && i+1 < len(os.Args) {
+			docsPath = os.Args[i+1]
+			i++
+		}
+	}
 
+	groups, resources := loadGroups(specPath)
+
+	if outDir != "-" {
+		if err := os.MkdirAll(outDir, 0o755); err != nil {
+			die("mkdir: %v", err)
+		}
+		for _, r := range resources {
+			ops := groups[r]
+			out := emitGroup(r, ops)
+			path := filepath.Join(outDir, r+".go")
+			if err := os.WriteFile(path, []byte(out), 0o644); err != nil {
+				die("write %s: %v", path, err)
+			}
+		}
+		root := emitRoot(resources)
+		if err := os.WriteFile(filepath.Join(outDir, "auto.go"), []byte(root), 0o644); err != nil {
+			die("write auto.go: %v", err)
+		}
+		fmt.Printf("generated %d resources, %d code files\n", len(resources), len(resources)+1)
+	}
+
+	if docsPath != "" {
+		if err := os.MkdirAll(filepath.Dir(docsPath), 0o755); err != nil {
+			die("mkdir docs: %v", err)
+		}
+		if err := os.WriteFile(docsPath, []byte(emitDocs(groups, resources)), 0o644); err != nil {
+			die("write docs: %v", err)
+		}
+		fmt.Printf("wrote docs %s\n", docsPath)
+	}
+}
+
+func loadGroups(specPath string) (map[string][]genOp, []string) {
 	data, err := os.ReadFile(specPath)
 	if err != nil {
 		die("read spec: %v", err)
@@ -113,10 +153,6 @@ func main() {
 		}
 	}
 
-	if err := os.MkdirAll(outDir, 0o755); err != nil {
-		die("mkdir: %v", err)
-	}
-
 	resources := make([]string, 0, len(groups))
 	for r := range groups {
 		resources = append(resources, r)
@@ -127,19 +163,9 @@ func main() {
 		ops := groups[r]
 		sort.Slice(ops, func(i, j int) bool { return ops[i].SubName < ops[j].SubName })
 		dedupSubNames(ops)
-		out := emitGroup(r, ops)
-		path := filepath.Join(outDir, r+".go")
-		if err := os.WriteFile(path, []byte(out), 0o644); err != nil {
-			die("write %s: %v", path, err)
-		}
+		groups[r] = ops
 	}
-
-	root := emitRoot(resources)
-	if err := os.WriteFile(filepath.Join(outDir, "auto.go"), []byte(root), 0o644); err != nil {
-		die("write auto.go: %v", err)
-	}
-
-	fmt.Printf("generated %d resources, %d files\n", len(resources), len(resources)+1)
+	return groups, resources
 }
 
 func die(format string, args ...any) {
@@ -340,6 +366,92 @@ func sanitizeShort(s string) string {
 	s = strings.ReplaceAll(s, "\r", " ")
 	if len(s) > 80 {
 		s = s[:77] + "..."
+	}
+	return s
+}
+
+func emitDocs(groups map[string][]genOp, resources []string) string {
+	var b strings.Builder
+	b.WriteString("# trello-cli command reference\n\n")
+	b.WriteString("Auto-generated from `openapi.json`. Do not edit by hand — re-run `make gen-cmds` to refresh.\n\n")
+
+	totalOps := 0
+	for _, r := range resources {
+		totalOps += len(groups[r])
+	}
+	fmt.Fprintf(&b, "**Coverage**: %d resource groups, %d operations.\n\n", len(resources), totalOps)
+
+	b.WriteString("## Resource groups\n\n")
+	b.WriteString("| Group | Operations |\n|-------|-----------:|\n")
+	for _, r := range resources {
+		fmt.Fprintf(&b, "| [`%s`](#%s) | %d |\n", r, strings.ToLower(r), len(groups[r]))
+	}
+	b.WriteString("\n")
+
+	b.WriteString("Plus two handcrafted commands:\n\n")
+	b.WriteString("- `me` — alias for `members get-members-id me`.\n")
+	b.WriteString("- `raw <METHOD> <PATH>` — passthrough to any endpoint.\n\n")
+
+	for _, r := range resources {
+		fmt.Fprintf(&b, "## %s\n\n", r)
+		fmt.Fprintf(&b, "%d operations.\n\n", len(groups[r]))
+		for _, op := range groups[r] {
+			emitOpDoc(&b, r, op)
+		}
+	}
+	return b.String()
+}
+
+func emitOpDoc(b *strings.Builder, resource string, op genOp) {
+	fmt.Fprintf(b, "### `%s %s`\n\n", resource, op.SubName)
+	fmt.Fprintf(b, "`%s %s`\n\n", op.Method, op.Path)
+	if op.Summary != "" {
+		fmt.Fprintf(b, "%s\n\n", strings.TrimSpace(op.Summary))
+	}
+
+	usage := "trello-cli " + resource + " " + op.SubName
+	for _, p := range op.PathParams {
+		usage += " <" + p.Name + ">"
+	}
+	fmt.Fprintf(b, "```bash\n%s\n```\n\n", usage)
+
+	if len(op.PathParams) > 0 {
+		b.WriteString("Path arguments:\n\n")
+		for _, p := range op.PathParams {
+			desc := strings.TrimSpace(p.Description)
+			if desc == "" {
+				desc = "(no description)"
+			}
+			fmt.Fprintf(b, "- `<%s>` — %s\n", p.Name, oneLine(desc))
+		}
+		b.WriteString("\n")
+	}
+
+	if len(op.QueryParams) > 0 {
+		b.WriteString("Query flags:\n\n")
+		for _, p := range op.QueryParams {
+			desc := strings.TrimSpace(p.Description)
+			if desc == "" {
+				desc = "(no description)"
+			}
+			fmt.Fprintf(b, "- `--%s` — %s\n", p.Name, oneLine(desc))
+		}
+		b.WriteString("\n")
+	}
+
+	if op.HasBody {
+		b.WriteString("Body: `--data <json|@file>` (optional JSON request body).\n\n")
+	}
+}
+
+func oneLine(s string) string {
+	s = strings.ReplaceAll(s, "\r\n", " ")
+	s = strings.ReplaceAll(s, "\n", " ")
+	for strings.Contains(s, "  ") {
+		s = strings.ReplaceAll(s, "  ", " ")
+	}
+	if len(s) > 200 {
+		s = s[:197] + "..."
 	}
 	return s
 }

@@ -2,6 +2,15 @@
 
 Go CLI over the Trello REST API. Resource commands are auto-generated
 from `openapi.json`, giving 100% endpoint coverage out of the box.
+Designed as the transport layer for AI agents (e.g. OpenClaw) to talk
+to Trello, plus a daily-driver CLI for humans.
+
+- **Human guide:** [`docs/USAGE.md`](docs/USAGE.md) — install, auth,
+  workflows, troubleshooting.
+- **Full command catalog:** [`docs/COMMANDS.md`](docs/COMMANDS.md) —
+  every operation, every flag (auto-generated from the spec).
+- **Agent skill (OpenClaw / AgentSkills):**
+  [`skills/trello-cli/SKILL.md`](skills/trello-cli/SKILL.md).
 
 ## Install
 

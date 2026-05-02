@@ -13,7 +13,7 @@ gen:
 	go build ./...
 
 gen-cmds:
-	go run ./tools/cmdgen $(SPEC) internal/commands/auto
+	go run ./tools/cmdgen $(SPEC) internal/commands/auto --docs docs/COMMANDS.md
 	go build ./...
 
 vet:
