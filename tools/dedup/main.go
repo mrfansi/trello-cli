@@ -34,13 +34,17 @@ func main() {
 		os.Exit(1)
 	}
 
-	deduped := dedupeTypes(data)
-	rewritten := anonUnion.ReplaceAll(deduped, []byte("$1$2 string"))
+	rewritten := process(data)
 
 	if err := os.WriteFile(path, rewritten, 0o644); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
+}
+
+func process(data []byte) []byte {
+	deduped := dedupeTypes(data)
+	return anonUnion.ReplaceAll(deduped, []byte("$1$2 string"))
 }
 
 func dedupeTypes(in []byte) []byte {

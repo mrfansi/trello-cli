@@ -52,6 +52,26 @@ trello-cli member get <username>
 
 Add `--json` to any command for raw JSON output.
 
+## Development
+
+```bash
+make build      # compile binary
+make test       # go test -race -cover ./...
+make vet        # go vet ./...
+make gen        # regenerate Trello client from openapi.json
+```
+
+## Testing
+
+```bash
+go test -race -cover ./internal/... ./tools/...
+```
+
+Logic-bearing packages (`config`, `output`, `cmdutil`, `tools/dedup`)
+have unit coverage. Cobra command wiring and the auth-injecting HTTP
+factory are exercised via the live smoke flow (`trello-cli me`,
+`board ls`, etc.) once credentials are configured.
+
 ## Regenerate client
 
 ```bash
