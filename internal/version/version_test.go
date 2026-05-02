@@ -15,10 +15,9 @@ func TestStringFormat(t *testing.T) {
 
 func TestResolveFromLdflags(t *testing.T) {
 	saveVersion, saveCommit, saveDate := Version, Commit, Date
-	saveOnce := resolveOnce
 	t.Cleanup(func() {
 		Version, Commit, Date = saveVersion, saveCommit, saveDate
-		resolveOnce = saveOnce
+		resolveOnce = sync.Once{}
 	})
 
 	Version = "v9.9.9"
