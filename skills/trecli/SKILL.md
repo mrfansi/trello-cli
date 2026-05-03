@@ -1,13 +1,13 @@
 ---
-name: trello-cli
-description: Read and write Trello (boards, lists, cards, members, checklists, labels, webhooks, search, ...) via the trello-cli binary. 100% Trello REST coverage. Use whenever the user mentions Trello.
-homepage: https://github.com/mrfansi/trello-cli
-metadata: {"openclaw":{"emoji":"📋","requires":{"bins":["trello-cli"],"env":["TRELLO_API_KEY","TRELLO_TOKEN"]},"primaryEnv":"TRELLO_TOKEN","install":[{"id":"go","kind":"go","module":"github.com/mrfansi/trello-cli/cmd/trello-cli","bins":["trello-cli"],"label":"Install trello-cli (go install)"}]}}
+name: trecli
+description: Read and write Trello (boards, lists, cards, members, checklists, labels, webhooks, search, ...) via the trecli binary. 100% Trello REST coverage. Use whenever the user mentions Trello.
+homepage: https://github.com/mrfansi/trecli
+metadata: {"openclaw":{"emoji":"📋","requires":{"bins":["trecli"],"env":["TRELLO_API_KEY","TRELLO_TOKEN"]},"primaryEnv":"TRELLO_TOKEN","install":[{"id":"go","kind":"go","module":"github.com/mrfansi/trecli/cmd/trecli","bins":["trecli"],"label":"Install trecli (go install)"}]}}
 ---
 
-# trello-cli
+# trecli
 
-Use `trello-cli` to read or write data in Trello. Every Trello REST
+Use `trecli` to read or write data in Trello. Every Trello REST
 endpoint (255 operations) is reachable as a CLI command. Output is
 always JSON on stdout; non-2xx responses go to stderr with exit 1.
 
@@ -23,23 +23,23 @@ Trigger this skill whenever the user asks you to:
 - look up identifiers (board ID, list ID, card ID, member ID)
 
 Do **not** invent endpoints from memory. If the user describes a task
-that does not match a known recipe below, run `trello-cli <group>
---help` to discover the operation, or fall back to `trello-cli raw`.
+that does not match a known recipe below, run `trecli <group>
+--help` to discover the operation, or fall back to `trecli raw`.
 
 ## Setup contract
 
 This skill assumes:
 
-- Binary `trello-cli` exists on `PATH` (`requires.bins` enforced).
+- Binary `trecli` exists on `PATH` (`requires.bins` enforced).
 - `TRELLO_API_KEY` and `TRELLO_TOKEN` are present in the environment
   (`requires.env` enforced). They are injected by OpenClaw at run time
-  via `skills.entries.trello-cli.env` or via `apiKey` SecretRef.
+  via `skills.entries.trecli.env` or via `apiKey` SecretRef.
 
 If both checks fail, do **not** call the CLI; ask the user to install
 the binary or configure credentials. Suggested fixes:
 
 ```bash
-go install github.com/mrfansi/trello-cli/cmd/trello-cli@latest
+go install github.com/mrfansi/trecli/cmd/trecli@latest
 export TRELLO_API_KEY=...   # https://trello.com/app-key
 export TRELLO_TOKEN=...     # click "Token" on that page
 ```
@@ -47,15 +47,15 @@ export TRELLO_TOKEN=...     # click "Token" on that page
 Verify auth in one round trip:
 
 ```bash
-trello-cli me
+trecli me
 ```
 
 ## Command shape
 
 ```text
-trello-cli <group> <operation> [path-args...] [flags]
-trello-cli raw <METHOD> <PATH> [flags]
-trello-cli me                              # alias for `members get-members-id me`
+trecli <group> <operation> [path-args...] [flags]
+trecli raw <METHOD> <PATH> [flags]
+trecli me                              # alias for `members get-members-id me`
 ```
 
 - `<group>` — one of: `actions`, `applications`, `batch`, `boards`,
@@ -80,8 +80,8 @@ Every successful call prints raw JSON to stdout. Pipe through `jq`
 for filtering. Examples:
 
 ```bash
-trello-cli boards get-boards-id <board-id> --fields name,url | jq .name
-trello-cli members get-members-id me | jq -r '.idBoards[]'
+trecli boards get-boards-id <board-id> --fields name,url | jq .name
+trecli members get-members-id me | jq -r '.idBoards[]'
 ```
 
 On non-2xx, stderr contains `trello api <status>: <body>` and the
@@ -94,7 +94,7 @@ Replace bracketed placeholders with real IDs.
 ### 1. Identify the user
 
 ```bash
-trello-cli me
+trecli me
 ```
 
 Returns the authenticated member object. Use to surface username,
@@ -103,7 +103,7 @@ email, board membership.
 ### 2. List the user's boards
 
 ```bash
-trello-cli members get-members-id-boards me --fields name,url,closed
+trecli members get-members-id-boards me --fields name,url,closed
 ```
 
 Returns an array. Filter open boards: `| jq '[.[] | select(.closed | not)]'`.
@@ -111,7 +111,7 @@ Returns an array. Filter open boards: `| jq '[.[] | select(.closed | not)]'`.
 ### 3. Read a board (with lists and cards in one call)
 
 ```bash
-trello-cli boards get-boards-id <board-id> \
+trecli boards get-boards-id <board-id> \
   --fields name,url \
   --lists open \
   --cards open
@@ -123,19 +123,19 @@ collections in the same response.
 ### 4. List the lists on a board
 
 ```bash
-trello-cli boards get-boards-id-lists <board-id> --fields name,pos,closed
+trecli boards get-boards-id-lists <board-id> --fields name,pos,closed
 ```
 
 ### 5. List the cards on a list
 
 ```bash
-trello-cli lists get-lists-id-cards <list-id> --fields name,desc,due,idMembers,labels
+trecli lists get-lists-id-cards <list-id> --fields name,desc,due,idMembers,labels
 ```
 
 ### 6. Find a list by name on a board
 
 ```bash
-trello-cli boards get-boards-id-lists <board-id> --fields name \
+trecli boards get-boards-id-lists <board-id> --fields name \
   | jq -r --arg n "<list-name>" '.[] | select(.name == $n) | .id'
 ```
 
@@ -144,7 +144,7 @@ trello-cli boards get-boards-id-lists <board-id> --fields name \
 Simple:
 
 ```bash
-trello-cli cards post-cards \
+trecli cards post-cards \
   --idList <list-id> \
   --name "Task title" \
   --desc "Task body"
@@ -153,7 +153,7 @@ trello-cli cards post-cards \
 Complex body (attachments, members, position, due):
 
 ```bash
-trello-cli cards post-cards --data '{
+trecli cards post-cards --data '{
   "idList": "<list-id>",
   "name": "Task",
   "desc": "...",
@@ -168,7 +168,7 @@ trello-cli cards post-cards --data '{
 Use a JSON body so multiple fields update in one call:
 
 ```bash
-trello-cli cards put-cards-id <card-id> --data '{
+trecli cards put-cards-id <card-id> --data '{
   "name": "Renamed",
   "desc": "Updated description",
   "idList": "<another-list-id>"
@@ -183,19 +183,19 @@ Field reference: `name`, `desc`, `closed`, `idMembers` (array),
 
 ```bash
 # Move
-trello-cli cards put-cards-id <card-id> --data '{"idList":"<list-id>"}'
+trecli cards put-cards-id <card-id> --data '{"idList":"<list-id>"}'
 
 # Archive
-trello-cli cards put-cards-id <card-id> --data '{"closed":true}'
+trecli cards put-cards-id <card-id> --data '{"closed":true}'
 
 # Unarchive
-trello-cli cards put-cards-id <card-id> --data '{"closed":false}'
+trecli cards put-cards-id <card-id> --data '{"closed":false}'
 ```
 
 ### 10. Delete a card
 
 ```bash
-trello-cli cards delete-cards-id <card-id>
+trecli cards delete-cards-id <card-id>
 ```
 
 Destructive. Confirm with the user before calling.
@@ -204,11 +204,11 @@ Destructive. Confirm with the user before calling.
 
 ```bash
 # Create the checklist on a card
-CL_ID=$(trello-cli checklists post-checklists \
+CL_ID=$(trecli checklists post-checklists \
   --data '{"idCard":"<card-id>","name":"Steps"}' | jq -r .id)
 
 # Add items
-trello-cli checklists post-checklists-id-checkitems "$CL_ID" \
+trecli checklists post-checklists-id-checkitems "$CL_ID" \
   --data '{"name":"First step","pos":"bottom"}'
 ```
 
@@ -216,19 +216,19 @@ trello-cli checklists post-checklists-id-checkitems "$CL_ID" \
 
 ```bash
 # Create
-trello-cli labels post-labels --data '{"idBoard":"<board-id>","name":"Bug","color":"red"}'
+trecli labels post-labels --data '{"idBoard":"<board-id>","name":"Bug","color":"red"}'
 
 # Add label to card
-trello-cli cards post-cards-id-idlabels <card-id> --value <label-id>
+trecli cards post-cards-id-idlabels <card-id> --value <label-id>
 
 # List labels on a board
-trello-cli boards get-boards-id-labels <board-id> --fields name,color
+trecli boards get-boards-id-labels <board-id> --fields name,color
 ```
 
 ### 13. Search across Trello
 
 ```bash
-trello-cli search get-search --query "<term>" --modelTypes cards,boards
+trecli search get-search --query "<term>" --modelTypes cards,boards
 ```
 
 `--modelTypes` accepts a comma-separated list of `actions`, `boards`,
@@ -238,17 +238,17 @@ trello-cli search get-search --query "<term>" --modelTypes cards,boards
 
 ```bash
 # Create a webhook subscribed to a model
-trello-cli webhooks post-webhooks --data '{
+trecli webhooks post-webhooks --data '{
   "idModel": "<board|card|list-id>",
   "callbackURL": "https://example.com/hook",
   "description": "My webhook"
 }'
 
 # List webhooks tied to your token
-trello-cli tokens get-tokens-token-webhooks "$TRELLO_TOKEN"
+trecli tokens get-tokens-token-webhooks "$TRELLO_TOKEN"
 
 # Delete a webhook
-trello-cli webhooks delete-webhooks-id <webhook-id>
+trecli webhooks delete-webhooks-id <webhook-id>
 ```
 
 ### 15. Raw passthrough (escape hatch)
@@ -256,11 +256,11 @@ trello-cli webhooks delete-webhooks-id <webhook-id>
 When a recipe above does not match, drop to `raw`:
 
 ```bash
-trello-cli raw GET /boards/{id}/memberships --path id=<board-id>
-trello-cli raw POST /cards/{id}/actions/comments \
+trecli raw GET /boards/{id}/memberships --path id=<board-id>
+trecli raw POST /cards/{id}/actions/comments \
   --path id=<card-id> \
   --query text="Comment body"
-trello-cli raw PUT /cards/{id} --path id=<card-id> --data @update.json
+trecli raw PUT /cards/{id} --path id=<card-id> --data @update.json
 ```
 
 Flags: `--path key=value`, `--query key=value`, `--header key=value`,
@@ -299,5 +299,5 @@ auto-injected.
 - Full command catalog: `{baseDir}/../../docs/COMMANDS.md` (or
   `docs/COMMANDS.md` from the repo root).
 - Human usage guide: `{baseDir}/../../docs/USAGE.md`.
-- Source: <https://github.com/mrfansi/trello-cli>.
+- Source: <https://github.com/mrfansi/trecli>.
 - Trello REST docs: <https://developer.atlassian.com/cloud/trello/rest/>.

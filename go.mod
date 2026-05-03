@@ -1,4 +1,4 @@
-module github.com/mrfansi/trello-cli
+module github.com/mrfansi/trecli
 
 go 1.25.0
 

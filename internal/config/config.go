@@ -30,7 +30,7 @@ func Load() (*Config, error) {
 
 	home, err := os.UserHomeDir()
 	if err == nil {
-		cfgDir := filepath.Join(home, ".trello-cli")
+		cfgDir := filepath.Join(home, ".trecli")
 		v.SetConfigName("config")
 		v.SetConfigType("yaml")
 		v.AddConfigPath(cfgDir)
@@ -43,7 +43,7 @@ func Load() (*Config, error) {
 		BaseURL:  v.GetString("base_url"),
 	}
 	if cfg.APIKey == "" || cfg.APIToken == "" {
-		return nil, fmt.Errorf("missing credentials: set %s and %s env vars or write ~/.trello-cli/config.yaml (api_key, token)", envAPIKey, envAPIToken)
+		return nil, fmt.Errorf("missing credentials: set %s and %s env vars or write ~/.trecli/config.yaml (api_key, token)", envAPIKey, envAPIToken)
 	}
 	return cfg, nil
 }

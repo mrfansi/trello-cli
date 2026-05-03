@@ -372,7 +372,7 @@ func sanitizeShort(s string) string {
 
 func emitDocs(groups map[string][]genOp, resources []string) string {
 	var b strings.Builder
-	b.WriteString("# trello-cli command reference\n\n")
+	b.WriteString("# trecli command reference\n\n")
 	b.WriteString("Auto-generated from `openapi.json`. Do not edit by hand — re-run `make gen-cmds` to refresh.\n\n")
 
 	totalOps := 0
@@ -409,7 +409,7 @@ func emitOpDoc(b *strings.Builder, resource string, op genOp) {
 		fmt.Fprintf(b, "%s\n\n", strings.TrimSpace(op.Summary))
 	}
 
-	usage := "trello-cli " + resource + " " + op.SubName
+	usage := "trecli " + resource + " " + op.SubName
 	for _, p := range op.PathParams {
 		usage += " <" + p.Name + ">"
 	}

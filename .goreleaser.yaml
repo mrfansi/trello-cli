@@ -1,16 +1,16 @@
 # goreleaser config — see https://goreleaser.com
 version: 2
 
-project_name: trello-cli
+project_name: trecli
 
 before:
   hooks:
     - go mod tidy
 
 builds:
-  - id: trello-cli
-    main: ./cmd/trello-cli
-    binary: trello-cli
+  - id: trecli
+    main: ./cmd/trecli
+    binary: trecli
     env:
       - CGO_ENABLED=0
     goos:
@@ -22,12 +22,12 @@ builds:
       - arm64
     ldflags:
       - -s -w
-      - -X github.com/mrfansi/trello-cli/internal/version.Version={{.Version}}
-      - -X github.com/mrfansi/trello-cli/internal/version.Commit={{.ShortCommit}}
-      - -X github.com/mrfansi/trello-cli/internal/version.Date={{.Date}}
+      - -X github.com/mrfansi/trecli/internal/version.Version={{.Version}}
+      - -X github.com/mrfansi/trecli/internal/version.Commit={{.ShortCommit}}
+      - -X github.com/mrfansi/trecli/internal/version.Date={{.Date}}
 
 archives:
-  - id: trello-cli
+  - id: trecli
     name_template: >-
       {{ .ProjectName }}_{{ .Version }}_
       {{- title .Os }}_
@@ -45,7 +45,7 @@ archives:
       - LICENSE*
       - docs/USAGE.md
       - docs/COMMANDS.md
-      - skills/trello-cli/SKILL.md
+      - skills/trecli/SKILL.md
 
 checksum:
   name_template: "checksums.txt"
@@ -73,15 +73,15 @@ release:
 
     **Homebrew (macOS / Linux):**
     ```bash
-    brew install mrfansi/tap/trello-cli
+    brew install mrfansi/tap/trecli
     ```
 
     **go install:**
     ```bash
-    go install github.com/mrfansi/trello-cli/cmd/trello-cli@v{{.Version}}
+    go install github.com/mrfansi/trecli/cmd/trecli@v{{.Version}}
     ```
 
     **From source:**
     ```bash
-    git clone https://github.com/mrfansi/trello-cli && cd trello-cli && make
+    git clone https://github.com/mrfansi/trecli && cd trecli && make
     ```

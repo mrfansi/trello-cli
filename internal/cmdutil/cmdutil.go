@@ -11,10 +11,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/mrfansi/trello-cli/internal/client"
-	"github.com/mrfansi/trello-cli/internal/config"
-	"github.com/mrfansi/trello-cli/internal/output"
-	"github.com/mrfansi/trello-cli/internal/trello"
+	"github.com/mrfansi/trecli/internal/client"
+	"github.com/mrfansi/trecli/internal/config"
+	"github.com/mrfansi/trecli/internal/output"
+	"github.com/mrfansi/trecli/internal/trello"
 )
 
 type Ctx struct {

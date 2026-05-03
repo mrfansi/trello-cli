@@ -10,9 +10,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mrfansi/trello-cli/internal/client"
-	"github.com/mrfansi/trello-cli/internal/cmdutil"
-	"github.com/mrfansi/trello-cli/internal/config"
+	"github.com/mrfansi/trecli/internal/client"
+	"github.com/mrfansi/trecli/internal/cmdutil"
+	"github.com/mrfansi/trecli/internal/config"
 	"github.com/spf13/cobra"
 )
 
@@ -36,10 +36,10 @@ Headers: --header key=value (repeatable).
 Body: --data '{"key":"v"}' or --data @file.json.
 
 Examples:
-  trello-cli raw GET /members/me
-  trello-cli raw GET /boards/{id} --path id=abc --query fields=name,url
-  trello-cli raw POST /cards --query idList=xyz --query name="New"
-  trello-cli raw PUT /cards/{id} --path id=abc --data @update.json`,
+  trecli raw GET /members/me
+  trecli raw GET /boards/{id} --path id=abc --query fields=name,url
+  trecli raw POST /cards --query idList=xyz --query name="New"
+  trecli raw PUT /cards/{id} --path id=abc --data @update.json`,
 		Args: cobra.RangeArgs(1, 2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			method, path, err := parseMethodPath(args, methodFlag)

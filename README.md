@@ -1,4 +1,4 @@
-# trello-cli
+# trecli
 
 Go CLI over the Trello REST API. Resource commands are auto-generated
 from `openapi.json`, giving 100% endpoint coverage out of the box.
@@ -10,7 +10,7 @@ to Trello, plus a daily-driver CLI for humans.
 - **Full command catalog:** [`docs/COMMANDS.md`](docs/COMMANDS.md) —
   every operation, every flag (auto-generated from the spec).
 - **Agent skill (OpenClaw / AgentSkills):**
-  [`skills/trello-cli/SKILL.md`](skills/trello-cli/SKILL.md).
+  [`skills/trecli/SKILL.md`](skills/trecli/SKILL.md).
 
 ## Install
 
@@ -19,7 +19,7 @@ Pick whichever fits your environment.
 ### Homebrew (macOS / Linux)
 
 ```bash
-brew install mrfansi/tap/trello-cli
+brew install mrfansi/tap/trecli
 ```
 
 ### `go install`
@@ -27,7 +27,7 @@ brew install mrfansi/tap/trello-cli
 Requires Go ≥ the version pinned in [`go.mod`](go.mod).
 
 ```bash
-go install github.com/mrfansi/trello-cli/cmd/trello-cli@latest
+go install github.com/mrfansi/trecli/cmd/trecli@latest
 ```
 
 The binary lands in `$GOBIN` (or `$GOPATH/bin`). Add that to `PATH` if
@@ -36,16 +36,16 @@ it isn't already.
 ### Pre-built binaries
 
 Download the archive for your platform from the
-[GitHub Releases page](https://github.com/mrfansi/trello-cli/releases)
-and drop the `trello-cli` binary on your `PATH`. Releases include
+[GitHub Releases page](https://github.com/mrfansi/trecli/releases)
+and drop the `trecli` binary on your `PATH`. Releases include
 checksums.
 
 ### From source
 
 ```bash
-git clone https://github.com/mrfansi/trello-cli.git
-cd trello-cli
-make            # builds ./bin/trello-cli
+git clone https://github.com/mrfansi/trecli.git
+cd trecli
+make            # builds ./bin/trecli
 make install    # or: install into $GOBIN
 ```
 
@@ -55,8 +55,8 @@ metadata via `-ldflags`. Run `make help` for every available target.
 ### Verify
 
 ```bash
-trello-cli --version
-trello-cli me        # exercises auth (see below)
+trecli --version
+trecli me        # exercises auth (see below)
 ```
 
 ## Auth
@@ -68,7 +68,7 @@ export TRELLO_API_KEY=...
 export TRELLO_TOKEN=...
 ```
 
-Or write `~/.trello-cli/config.yaml`:
+Or write `~/.trecli/config.yaml`:
 
 ```yaml
 api_key: ...
@@ -77,22 +77,22 @@ token: ...
 
 ## Usage
 
-Command shape: `trello-cli <resource> <operation> [args] [flags]`.
+Command shape: `trecli <resource> <operation> [args] [flags]`.
 Operation names mirror the OpenAPI `operationId` (kebab-case
 `<method>-<path>`).
 
 ```bash
-trello-cli me                                          # auth check (alias)
-trello-cli boards get-boards-id <board-id>             # GET /boards/{id}
-trello-cli boards get-boards-id-labels <board-id>      # GET /boards/{id}/labels
-trello-cli boards post-boards --name "New" --idOrganization <org-id>
-trello-cli cards post-cards --idList <list-id> --name "Task"
-trello-cli cards put-cards-id <card-id> --data '{"name":"Renamed"}'
-trello-cli cards delete-cards-id <card-id>
-trello-cli lists get-lists-id-cards <list-id>
-trello-cli labels get-labels-id <label-id>
-trello-cli members get-members-id me
-trello-cli search get-search --query "term" --modelTypes cards
+trecli me                                          # auth check (alias)
+trecli boards get-boards-id <board-id>             # GET /boards/{id}
+trecli boards get-boards-id-labels <board-id>      # GET /boards/{id}/labels
+trecli boards post-boards --name "New" --idOrganization <org-id>
+trecli cards post-cards --idList <list-id> --name "Task"
+trecli cards put-cards-id <card-id> --data '{"name":"Renamed"}'
+trecli cards delete-cards-id <card-id>
+trecli lists get-lists-id-cards <list-id>
+trecli labels get-labels-id <label-id>
+trecli members get-members-id me
+trecli search get-search --query "term" --modelTypes cards
 ```
 
 Top-level groups: `actions`, `applications`, `batch`, `boards`,
@@ -100,7 +100,7 @@ Top-level groups: `actions`, `applications`, `batch`, `boards`,
 `labels`, `lists`, `members`, `notifications`, `organizations`,
 `plugins`, `search`, `tokens`, `webhooks`.
 
-`trello-cli <group> --help` lists every operation in that group.
+`trecli <group> --help` lists every operation in that group.
 Every operation `--help` lists path args, query flags, and (for
 mutating endpoints) the `--data` body flag.
 
@@ -109,11 +109,11 @@ mutating endpoints) the `--data` body flag.
 For ad-hoc requests or quick experimentation:
 
 ```bash
-trello-cli raw GET /members/me
-trello-cli raw GET /boards/{id}/labels --path id=abc --query limit=10
-trello-cli raw POST /cards --query idList=xyz --query name="New"
-trello-cli raw PUT /cards/{id} --path id=abc --data @body.json
-trello-cli raw DELETE /cards/{id} --path id=abc
+trecli raw GET /members/me
+trecli raw GET /boards/{id}/labels --path id=abc --query limit=10
+trecli raw POST /cards --query idList=xyz --query name="New"
+trecli raw PUT /cards/{id} --path id=abc --data @body.json
+trecli raw DELETE /cards/{id} --path id=abc
 ```
 
 Flags: `--path key=value`, `--query key=value`, `--header key=value`,
@@ -128,7 +128,7 @@ filtering.
 ## Development
 
 ```bash
-make             # default goal: builds ./bin/trello-cli with embedded version
+make             # default goal: builds ./bin/trecli with embedded version
 make help        # list all targets
 make test        # go test -race -cover ./...
 make ci          # vet + test (used in CI)
@@ -183,7 +183,7 @@ the raw HTTP path so coverage stays in lockstep with the spec.
 ## Layout
 
 ```
-cmd/trello-cli/             # main entrypoint
+cmd/trecli/                 # main entrypoint
 internal/commands/          # cobra root + raw + me alias
 internal/commands/auto/     # generated resource subcommand groups
 internal/client/            # auth-injecting HTTP factory
@@ -196,7 +196,7 @@ tools/dedup/                # client codegen post-processor
 tools/cmdgen/               # cobra command + docs generator
 docs/USAGE.md               # human usage guide
 docs/COMMANDS.md            # full command reference (auto-generated)
-skills/trello-cli/          # OpenClaw / AgentSkills SKILL.md
+skills/trecli/              # OpenClaw / AgentSkills SKILL.md
 scripts/release.sh          # release tag helper
 .goreleaser.yaml            # multi-platform release config
 .github/workflows/          # CI + release pipelines

@@ -1,7 +1,7 @@
 package commands
 
 import (
-	"github.com/mrfansi/trello-cli/internal/commands/auto"
+	"github.com/mrfansi/trecli/internal/commands/auto"
 	"github.com/spf13/cobra"
 )
 

@@ -1,4 +1,4 @@
-# trello-cli command reference
+# trecli command reference
 
 Auto-generated from `openapi.json`. Do not edit by hand — re-run `make gen-cmds` to refresh.
 
@@ -43,7 +43,7 @@ Plus two handcrafted commands:
 Delete an Action
 
 ```bash
-trello-cli actions delete-actions-id <id>
+trecli actions delete-actions-id <id>
 ```
 
 Path arguments:
@@ -57,7 +57,7 @@ Path arguments:
 Delete Action's Reaction
 
 ```bash
-trello-cli actions delete-actions-idaction-reactions-id <idAction> <id>
+trecli actions delete-actions-idaction-reactions-id <idAction> <id>
 ```
 
 Path arguments:
@@ -72,7 +72,7 @@ Path arguments:
 Get an Action
 
 ```bash
-trello-cli actions get-actions-id <id>
+trecli actions get-actions-id <id>
 ```
 
 Path arguments:
@@ -96,7 +96,7 @@ Query flags:
 Get the Board for an Action
 
 ```bash
-trello-cli actions get-actions-id-board <id>
+trecli actions get-actions-id-board <id>
 ```
 
 Path arguments:
@@ -114,7 +114,7 @@ Query flags:
 Get the Card for an Action
 
 ```bash
-trello-cli actions get-actions-id-card <id>
+trecli actions get-actions-id-card <id>
 ```
 
 Path arguments:
@@ -132,7 +132,7 @@ Query flags:
 Get a specific field on an Action
 
 ```bash
-trello-cli actions get-actions-id-field <id> <field>
+trecli actions get-actions-id-field <id> <field>
 ```
 
 Path arguments:
@@ -147,7 +147,7 @@ Path arguments:
 Get the List for an Action
 
 ```bash
-trello-cli actions get-actions-id-list <id>
+trecli actions get-actions-id-list <id>
 ```
 
 Path arguments:
@@ -165,7 +165,7 @@ Query flags:
 Get the Member of an Action
 
 ```bash
-trello-cli actions get-actions-id-member <id>
+trecli actions get-actions-id-member <id>
 ```
 
 Path arguments:
@@ -183,7 +183,7 @@ Query flags:
 Get the Member Creator of an Action
 
 ```bash
-trello-cli actions get-actions-id-membercreator <id>
+trecli actions get-actions-id-membercreator <id>
 ```
 
 Path arguments:
@@ -201,7 +201,7 @@ Query flags:
 Get the Organization of an Action
 
 ```bash
-trello-cli actions get-actions-id-organization <id>
+trecli actions get-actions-id-organization <id>
 ```
 
 Path arguments:
@@ -219,7 +219,7 @@ Query flags:
 Get Action's Reactions
 
 ```bash
-trello-cli actions get-actions-idaction-reactions <idAction>
+trecli actions get-actions-idaction-reactions <idAction>
 ```
 
 Path arguments:
@@ -238,7 +238,7 @@ Query flags:
 Get Action's Reaction
 
 ```bash
-trello-cli actions get-actions-idaction-reactions-id <idAction> <id>
+trecli actions get-actions-idaction-reactions-id <idAction> <id>
 ```
 
 Path arguments:
@@ -258,7 +258,7 @@ Query flags:
 List Action's summary of Reactions
 
 ```bash
-trello-cli actions get-actions-idaction-reactionsummary <idAction>
+trecli actions get-actions-idaction-reactionsummary <idAction>
 ```
 
 Path arguments:
@@ -272,7 +272,7 @@ Path arguments:
 Create Reaction for Action
 
 ```bash
-trello-cli actions post-actions-idaction-reactions <idAction>
+trecli actions post-actions-idaction-reactions <idAction>
 ```
 
 Path arguments:
@@ -288,7 +288,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Update an Action
 
 ```bash
-trello-cli actions put-actions-id <id>
+trecli actions put-actions-id <id>
 ```
 
 Path arguments:
@@ -306,7 +306,7 @@ Query flags:
 Update a Comment Action
 
 ```bash
-trello-cli actions put-actions-id-text <id>
+trecli actions put-actions-id-text <id>
 ```
 
 Path arguments:
@@ -328,7 +328,7 @@ Query flags:
 Get Application's compliance data
 
 ```bash
-trello-cli applications applications-key-compliance <key>
+trecli applications applications-key-compliance <key>
 ```
 
 Path arguments:
@@ -346,7 +346,7 @@ Path arguments:
 Batch Requests
 
 ```bash
-trello-cli batch get-batch
+trecli batch get-batch
 ```
 
 Query flags:
@@ -364,7 +364,7 @@ Query flags:
 Get Checklists on a Board
 
 ```bash
-trello-cli boards boards-id-checklists <id>
+trecli boards boards-id-checklists <id>
 ```
 
 Path arguments:
@@ -378,7 +378,7 @@ Path arguments:
 Remove Member from Board
 
 ```bash
-trello-cli boards boardsidmembersidmember <id> <idMember>
+trecli boards boardsidmembersidmember <id> <idMember>
 ```
 
 Path arguments:
@@ -393,7 +393,7 @@ Path arguments:
 Delete a Board
 
 ```bash
-trello-cli boards delete-boards-id <id>
+trecli boards delete-boards-id <id>
 ```
 
 Path arguments:
@@ -407,7 +407,7 @@ Path arguments:
 Disable a Power-Up on a Board
 
 ```bash
-trello-cli boards delete-boards-id-boardplugins <id> <idPlugin>
+trecli boards delete-boards-id-boardplugins <id> <idPlugin>
 ```
 
 Path arguments:
@@ -422,7 +422,7 @@ Path arguments:
 Get Power-Ups on a Board
 
 ```bash
-trello-cli boards get-board-id-plugins <id>
+trecli boards get-board-id-plugins <id>
 ```
 
 Path arguments:
@@ -440,7 +440,7 @@ Query flags:
 Get a Board
 
 ```bash
-trello-cli boards get-boards-id <id>
+trecli boards get-boards-id <id>
 ```
 
 Path arguments:
@@ -473,7 +473,7 @@ Query flags:
 Get Actions of a Board
 
 ```bash
-trello-cli boards get-boards-id-actions <boardId>
+trecli boards get-boards-id-actions <boardId>
 ```
 
 Path arguments:
@@ -503,7 +503,7 @@ Query flags:
 Get Enabled Power-Ups on Board
 
 ```bash
-trello-cli boards get-boards-id-boardplugins <id>
+trecli boards get-boards-id-boardplugins <id>
 ```
 
 Path arguments:
@@ -517,7 +517,7 @@ Path arguments:
 Get boardStars on a Board
 
 ```bash
-trello-cli boards get-boards-id-boardstars <boardId>
+trecli boards get-boards-id-boardstars <boardId>
 ```
 
 Path arguments:
@@ -535,7 +535,7 @@ Query flags:
 Get Cards on a Board
 
 ```bash
-trello-cli boards get-boards-id-cards <id>
+trecli boards get-boards-id-cards <id>
 ```
 
 Path arguments:
@@ -549,7 +549,7 @@ Path arguments:
 Get filtered Cards on a Board
 
 ```bash
-trello-cli boards get-boards-id-cards-filter <id> <filter>
+trecli boards get-boards-id-cards-filter <id> <filter>
 ```
 
 Path arguments:
@@ -564,7 +564,7 @@ Path arguments:
 Get Custom Fields for Board
 
 ```bash
-trello-cli boards get-boards-id-customfields <id>
+trecli boards get-boards-id-customfields <id>
 ```
 
 Path arguments:
@@ -578,7 +578,7 @@ Path arguments:
 Get a field on a Board
 
 ```bash
-trello-cli boards get-boards-id-field <id> <field>
+trecli boards get-boards-id-field <id> <field>
 ```
 
 Path arguments:
@@ -593,7 +593,7 @@ Path arguments:
 Get Labels on a Board
 
 ```bash
-trello-cli boards get-boards-id-labels <id>
+trecli boards get-boards-id-labels <id>
 ```
 
 Path arguments:
@@ -612,7 +612,7 @@ Query flags:
 Get Lists on a Board
 
 ```bash
-trello-cli boards get-boards-id-lists <id>
+trecli boards get-boards-id-lists <id>
 ```
 
 Path arguments:
@@ -633,7 +633,7 @@ Query flags:
 Get filtered Lists on a Board
 
 ```bash
-trello-cli boards get-boards-id-lists-filter <id> <filter>
+trecli boards get-boards-id-lists-filter <id> <filter>
 ```
 
 Path arguments:
@@ -648,7 +648,7 @@ Path arguments:
 Get the Members of a Board
 
 ```bash
-trello-cli boards get-boards-id-members <id>
+trecli boards get-boards-id-members <id>
 ```
 
 Path arguments:
@@ -662,7 +662,7 @@ Path arguments:
 Get Memberships of a Board
 
 ```bash
-trello-cli boards get-boards-id-memberships <id>
+trecli boards get-boards-id-memberships <id>
 ```
 
 Path arguments:
@@ -684,7 +684,7 @@ Query flags:
 Create a Board
 
 ```bash
-trello-cli boards post-boards
+trecli boards post-boards
 ```
 
 Query flags:
@@ -713,7 +713,7 @@ Query flags:
 Enable a Power-Up on a Board
 
 ```bash
-trello-cli boards post-boards-id-boardplugins <id>
+trecli boards post-boards-id-boardplugins <id>
 ```
 
 Path arguments:
@@ -731,7 +731,7 @@ Query flags:
 Create a calendarKey for a Board
 
 ```bash
-trello-cli boards post-boards-id-calendarkey-generate <id>
+trecli boards post-boards-id-calendarkey-generate <id>
 ```
 
 Path arguments:
@@ -745,7 +745,7 @@ Path arguments:
 Create a emailKey for a Board
 
 ```bash
-trello-cli boards post-boards-id-emailkey-generate <id>
+trecli boards post-boards-id-emailkey-generate <id>
 ```
 
 Path arguments:
@@ -759,7 +759,7 @@ Path arguments:
 Create a Tag for a Board
 
 ```bash
-trello-cli boards post-boards-id-idtags <id>
+trecli boards post-boards-id-idtags <id>
 ```
 
 Path arguments:
@@ -777,7 +777,7 @@ Query flags:
 Create a Label on a Board
 
 ```bash
-trello-cli boards post-boards-id-labels <id>
+trecli boards post-boards-id-labels <id>
 ```
 
 Path arguments:
@@ -796,7 +796,7 @@ Query flags:
 Create a List on a Board
 
 ```bash
-trello-cli boards post-boards-id-lists <id>
+trecli boards post-boards-id-lists <id>
 ```
 
 Path arguments:
@@ -815,7 +815,7 @@ Query flags:
 Mark Board as viewed
 
 ```bash
-trello-cli boards post-boards-id-markedasviewed <id>
+trecli boards post-boards-id-markedasviewed <id>
 ```
 
 Path arguments:
@@ -829,7 +829,7 @@ Path arguments:
 Update a Board
 
 ```bash
-trello-cli boards put-boards-id <id>
+trecli boards put-boards-id <id>
 ```
 
 Path arguments:
@@ -861,7 +861,7 @@ Query flags:
 Invite Member to Board via email
 
 ```bash
-trello-cli boards put-boards-id-members <id>
+trecli boards put-boards-id-members <id>
 ```
 
 Path arguments:
@@ -882,7 +882,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Add a Member to a Board
 
 ```bash
-trello-cli boards put-boards-id-members-idmember <id> <idMember>
+trecli boards put-boards-id-members-idmember <id> <idMember>
 ```
 
 Path arguments:
@@ -902,7 +902,7 @@ Query flags:
 Update Membership of Member on a Board
 
 ```bash
-trello-cli boards put-boards-id-memberships-idmembership <id> <idMembership>
+trecli boards put-boards-id-memberships-idmembership <id> <idMembership>
 ```
 
 Path arguments:
@@ -922,7 +922,7 @@ Query flags:
 Update emailPosition Pref on a Board
 
 ```bash
-trello-cli boards put-boards-id-myprefs-emailposition <id>
+trecli boards put-boards-id-myprefs-emailposition <id>
 ```
 
 Path arguments:
@@ -940,7 +940,7 @@ Query flags:
 Update idEmailList Pref on a Board
 
 ```bash
-trello-cli boards put-boards-id-myprefs-idemaillist <id>
+trecli boards put-boards-id-myprefs-idemaillist <id>
 ```
 
 Path arguments:
@@ -958,7 +958,7 @@ Query flags:
 Update showSidebar Pref on a Board
 
 ```bash
-trello-cli boards put-boards-id-myprefs-showsidebar <id>
+trecli boards put-boards-id-myprefs-showsidebar <id>
 ```
 
 Path arguments:
@@ -976,7 +976,7 @@ Query flags:
 Update showSidebarActivity Pref on a Board
 
 ```bash
-trello-cli boards put-boards-id-myprefs-showsidebaractivity <id>
+trecli boards put-boards-id-myprefs-showsidebaractivity <id>
 ```
 
 Path arguments:
@@ -994,7 +994,7 @@ Query flags:
 Update showSidebarBoardActions Pref on a Board
 
 ```bash
-trello-cli boards put-boards-id-myprefs-showsidebarboardactions <id>
+trecli boards put-boards-id-myprefs-showsidebarboardactions <id>
 ```
 
 Path arguments:
@@ -1012,7 +1012,7 @@ Query flags:
 Update showSidebarMembers Pref on a Board
 
 ```bash
-trello-cli boards put-boards-id-myprefs-showsidebarmembers <id>
+trecli boards put-boards-id-myprefs-showsidebarmembers <id>
 ```
 
 Path arguments:
@@ -1034,7 +1034,7 @@ Query flags:
 Add Member vote to Card
 
 ```bash
-trello-cli cards cardsidmembersvoted-1 <id>
+trecli cards cardsidmembersvoted-1 <id>
 ```
 
 Path arguments:
@@ -1052,7 +1052,7 @@ Query flags:
 Delete a Card
 
 ```bash
-trello-cli cards delete-cards-id <id>
+trecli cards delete-cards-id <id>
 ```
 
 Path arguments:
@@ -1066,7 +1066,7 @@ Path arguments:
 Delete a comment on a Card
 
 ```bash
-trello-cli cards delete-cards-id-actions-id-comments <id> <idAction>
+trecli cards delete-cards-id-actions-id-comments <id> <idAction>
 ```
 
 Path arguments:
@@ -1081,7 +1081,7 @@ Path arguments:
 Delete checkItem on a Card
 
 ```bash
-trello-cli cards delete-cards-id-checkitem-idcheckitem <id> <idCheckItem>
+trecli cards delete-cards-id-checkitem-idcheckitem <id> <idCheckItem>
 ```
 
 Path arguments:
@@ -1096,7 +1096,7 @@ Path arguments:
 Delete a Checklist on a Card
 
 ```bash
-trello-cli cards delete-cards-id-checklists-idchecklist <id> <idChecklist>
+trecli cards delete-cards-id-checklists-idchecklist <id> <idChecklist>
 ```
 
 Path arguments:
@@ -1111,7 +1111,7 @@ Path arguments:
 Remove a Label from a Card
 
 ```bash
-trello-cli cards delete-cards-id-idlabels-idlabel <id> <idLabel>
+trecli cards delete-cards-id-idlabels-idlabel <id> <idLabel>
 ```
 
 Path arguments:
@@ -1126,7 +1126,7 @@ Path arguments:
 Remove a Member's Vote on a Card
 
 ```bash
-trello-cli cards delete-cards-id-membersvoted-idmember <id> <idMember>
+trecli cards delete-cards-id-membersvoted-idmember <id> <idMember>
 ```
 
 Path arguments:
@@ -1141,7 +1141,7 @@ Path arguments:
 Delete a Sticker on a Card
 
 ```bash
-trello-cli cards delete-cards-id-stickers-idsticker <id> <idSticker>
+trecli cards delete-cards-id-stickers-idsticker <id> <idSticker>
 ```
 
 Path arguments:
@@ -1156,7 +1156,7 @@ Path arguments:
 Remove a Member from a Card
 
 ```bash
-trello-cli cards delete-id-idmembers-idmember <id> <idMember>
+trecli cards delete-id-idmembers-idmember <id> <idMember>
 ```
 
 Path arguments:
@@ -1171,7 +1171,7 @@ Path arguments:
 Delete an Attachment on a Card
 
 ```bash
-trello-cli cards deleted-cards-id-attachments-idattachment <id> <idAttachment>
+trecli cards deleted-cards-id-attachments-idattachment <id> <idAttachment>
 ```
 
 Path arguments:
@@ -1186,7 +1186,7 @@ Path arguments:
 Get a Card
 
 ```bash
-trello-cli cards get-cards-id <id>
+trecli cards get-cards-id <id>
 ```
 
 Path arguments:
@@ -1221,7 +1221,7 @@ Query flags:
 Get Actions on a Card
 
 ```bash
-trello-cli cards get-cards-id-actions <id>
+trecli cards get-cards-id-actions <id>
 ```
 
 Path arguments:
@@ -1240,7 +1240,7 @@ Query flags:
 Get Attachments on a Card
 
 ```bash
-trello-cli cards get-cards-id-attachments <id>
+trecli cards get-cards-id-attachments <id>
 ```
 
 Path arguments:
@@ -1259,7 +1259,7 @@ Query flags:
 Get an Attachment on a Card
 
 ```bash
-trello-cli cards get-cards-id-attachments-idattachment <id> <idAttachment>
+trecli cards get-cards-id-attachments-idattachment <id> <idAttachment>
 ```
 
 Path arguments:
@@ -1278,7 +1278,7 @@ Query flags:
 Get the Board the Card is on
 
 ```bash
-trello-cli cards get-cards-id-board <id>
+trecli cards get-cards-id-board <id>
 ```
 
 Path arguments:
@@ -1296,7 +1296,7 @@ Query flags:
 Get checkItem on a Card
 
 ```bash
-trello-cli cards get-cards-id-checkitem-idcheckitem <id> <idCheckItem>
+trecli cards get-cards-id-checkitem-idcheckitem <id> <idCheckItem>
 ```
 
 Path arguments:
@@ -1315,7 +1315,7 @@ Query flags:
 Get checkItems on a Card
 
 ```bash
-trello-cli cards get-cards-id-checkitemstates <id>
+trecli cards get-cards-id-checkitemstates <id>
 ```
 
 Path arguments:
@@ -1333,7 +1333,7 @@ Query flags:
 Get Checklists on a Card
 
 ```bash
-trello-cli cards get-cards-id-checklists <id>
+trecli cards get-cards-id-checklists <id>
 ```
 
 Path arguments:
@@ -1354,7 +1354,7 @@ Query flags:
 Get Custom Field Items for a Card
 
 ```bash
-trello-cli cards get-cards-id-customfielditems <id>
+trecli cards get-cards-id-customfielditems <id>
 ```
 
 Path arguments:
@@ -1368,7 +1368,7 @@ Path arguments:
 Get a field on a Card
 
 ```bash
-trello-cli cards get-cards-id-field <id> <field>
+trecli cards get-cards-id-field <id> <field>
 ```
 
 Path arguments:
@@ -1383,7 +1383,7 @@ Path arguments:
 Get the List of a Card
 
 ```bash
-trello-cli cards get-cards-id-list <id>
+trecli cards get-cards-id-list <id>
 ```
 
 Path arguments:
@@ -1401,7 +1401,7 @@ Query flags:
 Get the Members of a Card
 
 ```bash
-trello-cli cards get-cards-id-members <id>
+trecli cards get-cards-id-members <id>
 ```
 
 Path arguments:
@@ -1419,7 +1419,7 @@ Query flags:
 Get Members who have voted on a Card
 
 ```bash
-trello-cli cards get-cards-id-membersvoted <id>
+trecli cards get-cards-id-membersvoted <id>
 ```
 
 Path arguments:
@@ -1437,7 +1437,7 @@ Query flags:
 Get pluginData on a Card
 
 ```bash
-trello-cli cards get-cards-id-plugindata <id>
+trecli cards get-cards-id-plugindata <id>
 ```
 
 Path arguments:
@@ -1451,7 +1451,7 @@ Path arguments:
 Get Stickers on a Card
 
 ```bash
-trello-cli cards get-cards-id-stickers <id>
+trecli cards get-cards-id-stickers <id>
 ```
 
 Path arguments:
@@ -1469,7 +1469,7 @@ Query flags:
 Get a Sticker on a Card
 
 ```bash
-trello-cli cards get-cards-id-stickers-idsticker <id> <idSticker>
+trecli cards get-cards-id-stickers-idsticker <id> <idSticker>
 ```
 
 Path arguments:
@@ -1488,7 +1488,7 @@ Query flags:
 Create a new Card
 
 ```bash
-trello-cli cards post-cards
+trecli cards post-cards
 ```
 
 Query flags:
@@ -1519,7 +1519,7 @@ Query flags:
 Add a new comment to a Card
 
 ```bash
-trello-cli cards post-cards-id-actions-comments <id>
+trecli cards post-cards-id-actions-comments <id>
 ```
 
 Path arguments:
@@ -1537,7 +1537,7 @@ Query flags:
 Create Attachment On Card
 
 ```bash
-trello-cli cards post-cards-id-attachments <id>
+trecli cards post-cards-id-attachments <id>
 ```
 
 Path arguments:
@@ -1559,7 +1559,7 @@ Query flags:
 Create Checklist on a Card
 
 ```bash
-trello-cli cards post-cards-id-checklists <id>
+trecli cards post-cards-id-checklists <id>
 ```
 
 Path arguments:
@@ -1579,7 +1579,7 @@ Query flags:
 Add a Label to a Card
 
 ```bash
-trello-cli cards post-cards-id-idlabels <id>
+trecli cards post-cards-id-idlabels <id>
 ```
 
 Path arguments:
@@ -1597,7 +1597,7 @@ Query flags:
 Add a Member to a Card
 
 ```bash
-trello-cli cards post-cards-id-idmembers <id>
+trecli cards post-cards-id-idmembers <id>
 ```
 
 Path arguments:
@@ -1615,7 +1615,7 @@ Query flags:
 Create a new Label on a Card
 
 ```bash
-trello-cli cards post-cards-id-labels <id>
+trecli cards post-cards-id-labels <id>
 ```
 
 Path arguments:
@@ -1634,7 +1634,7 @@ Query flags:
 Mark a Card's Notifications as read
 
 ```bash
-trello-cli cards post-cards-id-markassociatednotificationsread <id>
+trecli cards post-cards-id-markassociatednotificationsread <id>
 ```
 
 Path arguments:
@@ -1648,7 +1648,7 @@ Path arguments:
 Add a Sticker to a Card
 
 ```bash
-trello-cli cards post-cards-id-stickers <id>
+trecli cards post-cards-id-stickers <id>
 ```
 
 Path arguments:
@@ -1670,7 +1670,7 @@ Query flags:
 Update a Card
 
 ```bash
-trello-cli cards put-cards-id <id>
+trecli cards put-cards-id <id>
 ```
 
 Path arguments:
@@ -1704,7 +1704,7 @@ Query flags:
 Update Comment Action on a Card
 
 ```bash
-trello-cli cards put-cards-id-actions-idaction-comments <id> <idAction>
+trecli cards put-cards-id-actions-idaction-comments <id> <idAction>
 ```
 
 Path arguments:
@@ -1723,7 +1723,7 @@ Query flags:
 Update a checkItem on a Card
 
 ```bash
-trello-cli cards put-cards-id-checkitem-idcheckitem <id> <idCheckItem>
+trecli cards put-cards-id-checkitem-idcheckitem <id> <idCheckItem>
 ```
 
 Path arguments:
@@ -1748,7 +1748,7 @@ Query flags:
 Update a Sticker on a Card
 
 ```bash
-trello-cli cards put-cards-id-stickers-idsticker <id> <idSticker>
+trecli cards put-cards-id-stickers-idsticker <id> <idSticker>
 ```
 
 Path arguments:
@@ -1770,7 +1770,7 @@ Query flags:
 Update Checkitem on Checklist on Card
 
 ```bash
-trello-cli cards put-cards-idcard-checklist-idchecklist-checkitem-idcheckitem <idCard> <idCheckItem> <idChecklist>
+trecli cards put-cards-idcard-checklist-idchecklist-checkitem-idcheckitem <idCard> <idCheckItem> <idChecklist>
 ```
 
 Path arguments:
@@ -1790,7 +1790,7 @@ Query flags:
 Update Custom Field item on Card
 
 ```bash
-trello-cli cards put-cards-idcard-customfield-idcustomfield-item <idCard> <idCustomField>
+trecli cards put-cards-idcard-customfield-idcustomfield-item <idCard> <idCustomField>
 ```
 
 Path arguments:
@@ -1807,7 +1807,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Update Multiple Custom Field items on Card
 
 ```bash
-trello-cli cards put-cards-idcard-customfields <idCard>
+trecli cards put-cards-idcard-customfields <idCard>
 ```
 
 Path arguments:
@@ -1827,7 +1827,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Delete a Checklist
 
 ```bash
-trello-cli checklists delete-checklists-id <id>
+trecli checklists delete-checklists-id <id>
 ```
 
 Path arguments:
@@ -1841,7 +1841,7 @@ Path arguments:
 Delete Checkitem from Checklist
 
 ```bash
-trello-cli checklists delete-checklists-id-checkitems-idcheckitem <id> <idCheckItem>
+trecli checklists delete-checklists-id-checkitems-idcheckitem <id> <idCheckItem>
 ```
 
 Path arguments:
@@ -1856,7 +1856,7 @@ Path arguments:
 Get a Checklist
 
 ```bash
-trello-cli checklists get-checklists-id <id>
+trecli checklists get-checklists-id <id>
 ```
 
 Path arguments:
@@ -1877,7 +1877,7 @@ Query flags:
 Get the Board the Checklist is on
 
 ```bash
-trello-cli checklists get-checklists-id-board <id>
+trecli checklists get-checklists-id-board <id>
 ```
 
 Path arguments:
@@ -1895,7 +1895,7 @@ Query flags:
 Get the Card a Checklist is on
 
 ```bash
-trello-cli checklists get-checklists-id-cards <id>
+trecli checklists get-checklists-id-cards <id>
 ```
 
 Path arguments:
@@ -1909,7 +1909,7 @@ Path arguments:
 Get Checkitems on a Checklist
 
 ```bash
-trello-cli checklists get-checklists-id-checkitems <id>
+trecli checklists get-checklists-id-checkitems <id>
 ```
 
 Path arguments:
@@ -1928,7 +1928,7 @@ Query flags:
 Get a Checkitem on a Checklist
 
 ```bash
-trello-cli checklists get-checklists-id-checkitems-idcheckitem <id> <idCheckItem>
+trecli checklists get-checklists-id-checkitems-idcheckitem <id> <idCheckItem>
 ```
 
 Path arguments:
@@ -1947,7 +1947,7 @@ Query flags:
 Get field on a Checklist
 
 ```bash
-trello-cli checklists get-checklists-id-field <id> <field>
+trecli checklists get-checklists-id-field <id> <field>
 ```
 
 Path arguments:
@@ -1962,7 +1962,7 @@ Path arguments:
 Create a Checklist
 
 ```bash
-trello-cli checklists post-checklists
+trecli checklists post-checklists
 ```
 
 Query flags:
@@ -1979,7 +1979,7 @@ Query flags:
 Create Checkitem on Checklist
 
 ```bash
-trello-cli checklists post-checklists-id-checkitems <id>
+trecli checklists post-checklists-id-checkitems <id>
 ```
 
 Path arguments:
@@ -2002,7 +2002,7 @@ Query flags:
 Update field on a Checklist
 
 ```bash
-trello-cli checklists put-checklists-id-field <id> <field>
+trecli checklists put-checklists-id-field <id> <field>
 ```
 
 Path arguments:
@@ -2021,7 +2021,7 @@ Query flags:
 Update a Checklist
 
 ```bash
-trello-cli checklists put-checlists-id <id>
+trecli checklists put-checlists-id <id>
 ```
 
 Path arguments:
@@ -2044,7 +2044,7 @@ Query flags:
 Delete a Custom Field definition
 
 ```bash
-trello-cli customFields delete-customfields-id <id>
+trecli customFields delete-customfields-id <id>
 ```
 
 Path arguments:
@@ -2058,7 +2058,7 @@ Path arguments:
 Delete Option of Custom Field dropdown
 
 ```bash
-trello-cli customFields delete-customfields-options-idcustomfieldoption <id> <idCustomFieldOption>
+trecli customFields delete-customfields-options-idcustomfieldoption <id> <idCustomFieldOption>
 ```
 
 Path arguments:
@@ -2073,7 +2073,7 @@ Path arguments:
 Get a Custom Field
 
 ```bash
-trello-cli customFields get-customfields-id <id>
+trecli customFields get-customfields-id <id>
 ```
 
 Path arguments:
@@ -2087,7 +2087,7 @@ Path arguments:
 Add Option to Custom Field dropdown
 
 ```bash
-trello-cli customFields get-customfields-id-options <id>
+trecli customFields get-customfields-id-options <id>
 ```
 
 Path arguments:
@@ -2101,7 +2101,7 @@ Path arguments:
 Get Option of Custom Field dropdown
 
 ```bash
-trello-cli customFields get-customfields-options-idcustomfieldoption <id> <idCustomFieldOption>
+trecli customFields get-customfields-options-idcustomfieldoption <id> <idCustomFieldOption>
 ```
 
 Path arguments:
@@ -2116,7 +2116,7 @@ Path arguments:
 Create a new Custom Field on a Board
 
 ```bash
-trello-cli customFields post-customfields
+trecli customFields post-customfields
 ```
 
 Body: `--data <json|@file>` (optional JSON request body).
@@ -2128,7 +2128,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Get Options of Custom Field drop down
 
 ```bash
-trello-cli customFields post-customfields-id-options <id>
+trecli customFields post-customfields-id-options <id>
 ```
 
 Path arguments:
@@ -2142,7 +2142,7 @@ Path arguments:
 Update a Custom Field definition
 
 ```bash
-trello-cli customFields put-customfields-id <id>
+trecli customFields put-customfields-id <id>
 ```
 
 Path arguments:
@@ -2162,7 +2162,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 List available Emoji
 
 ```bash
-trello-cli emoji emoji
+trecli emoji emoji
 ```
 
 Query flags:
@@ -2181,7 +2181,7 @@ Query flags:
 Delete an Organization from an Enterprise.
 
 ```bash
-trello-cli enterprises delete-enterprises-id-organizations-idorg <id> <idOrg>
+trecli enterprises delete-enterprises-id-organizations-idorg <id> <idOrg>
 ```
 
 Path arguments:
@@ -2196,7 +2196,7 @@ Path arguments:
 Deactivate a Member of an Enterprise.
 
 ```bash
-trello-cli enterprises enterprises-id-members-idmember-deactivated <id> <idMember>
+trecli enterprises enterprises-id-members-idmember-deactivated <id> <idMember>
 ```
 
 Path arguments:
@@ -2218,7 +2218,7 @@ Query flags:
 Remove a Member as admin from Enterprise.
 
 ```bash
-trello-cli enterprises enterprises-id-organizations-idmember <id> <idMember>
+trecli enterprises enterprises-id-organizations-idmember <id> <idMember>
 ```
 
 Path arguments:
@@ -2233,7 +2233,7 @@ Path arguments:
 Get an Enterprise
 
 ```bash
-trello-cli enterprises get-enterprises-id <id>
+trecli enterprises get-enterprises-id <id>
 ```
 
 Path arguments:
@@ -2263,7 +2263,7 @@ Query flags:
 Get Enterprise admin Members
 
 ```bash
-trello-cli enterprises get-enterprises-id-admins <id>
+trecli enterprises get-enterprises-id-admins <id>
 ```
 
 Path arguments:
@@ -2281,7 +2281,7 @@ Query flags:
 Get auditlog data for an Enterprise
 
 ```bash
-trello-cli enterprises get-enterprises-id-auditlog <id>
+trecli enterprises get-enterprises-id-auditlog <id>
 ```
 
 Path arguments:
@@ -2295,7 +2295,7 @@ Path arguments:
 Get ClaimableOrganizations of an Enterprise
 
 ```bash
-trello-cli enterprises get-enterprises-id-claimableorganizations <id>
+trecli enterprises get-enterprises-id-claimableorganizations <id>
 ```
 
 Path arguments:
@@ -2317,7 +2317,7 @@ Query flags:
 Get Members of Enterprise
 
 ```bash
-trello-cli enterprises get-enterprises-id-members <id>
+trecli enterprises get-enterprises-id-members <id>
 ```
 
 Path arguments:
@@ -2343,7 +2343,7 @@ Query flags:
 Get a Member of Enterprise
 
 ```bash
-trello-cli enterprises get-enterprises-id-members-idmember <id> <idMember>
+trecli enterprises get-enterprises-id-members-idmember <id> <idMember>
 ```
 
 Path arguments:
@@ -2364,7 +2364,7 @@ Query flags:
 Get Organizations of an Enterprise
 
 ```bash
-trello-cli enterprises get-enterprises-id-organizations <id>
+trecli enterprises get-enterprises-id-organizations <id>
 ```
 
 Path arguments:
@@ -2385,7 +2385,7 @@ Query flags:
 Bulk accept a set of organizations to an Enterprise.
 
 ```bash
-trello-cli enterprises get-enterprises-id-organizations-bulk-idorganizations <id> <idOrganizations>
+trecli enterprises get-enterprises-id-organizations-bulk-idorganizations <id> <idOrganizations>
 ```
 
 Path arguments:
@@ -2400,7 +2400,7 @@ Path arguments:
 Get PendingOrganizations of an Enterprise
 
 ```bash
-trello-cli enterprises get-enterprises-id-pendingorganizations <id>
+trecli enterprises get-enterprises-id-pendingorganizations <id>
 ```
 
 Path arguments:
@@ -2419,7 +2419,7 @@ Query flags:
 Get signupUrl for Enterprise
 
 ```bash
-trello-cli enterprises get-enterprises-id-signupurl <id>
+trecli enterprises get-enterprises-id-signupurl <id>
 ```
 
 Path arguments:
@@ -2440,7 +2440,7 @@ Query flags:
 Get a bulk list of organizations that can be transferred to an enterprise.
 
 ```bash
-trello-cli enterprises get-enterprises-id-transferrable-bulk-idorganizations <id> <idOrganizations>
+trecli enterprises get-enterprises-id-transferrable-bulk-idorganizations <id> <idOrganizations>
 ```
 
 Path arguments:
@@ -2455,7 +2455,7 @@ Path arguments:
 Get whether an organization can be transferred to an enterprise.
 
 ```bash
-trello-cli enterprises get-enterprises-id-transferrable-organization-idorganization <id> <idOrganization>
+trecli enterprises get-enterprises-id-transferrable-organization-idorganization <id> <idOrganization>
 ```
 
 Path arguments:
@@ -2470,7 +2470,7 @@ Path arguments:
 Get Users of an Enterprise
 
 ```bash
-trello-cli enterprises get-users-id <id>
+trecli enterprises get-users-id <id>
 ```
 
 Path arguments:
@@ -2496,7 +2496,7 @@ Query flags:
 Create an auth Token for an Enterprise.
 
 ```bash
-trello-cli enterprises post-enterprises-id-tokens <id>
+trecli enterprises post-enterprises-id-tokens <id>
 ```
 
 Path arguments:
@@ -2514,7 +2514,7 @@ Query flags:
 Update Member to be admin of Enterprise
 
 ```bash
-trello-cli enterprises put-enterprises-id-admins-idmember <id> <idMember>
+trecli enterprises put-enterprises-id-admins-idmember <id> <idMember>
 ```
 
 Path arguments:
@@ -2529,7 +2529,7 @@ Path arguments:
 Decline enterpriseJoinRequests from one organization or a bulk list of organizations.
 
 ```bash
-trello-cli enterprises put-enterprises-id-enterprisejoinrequest-bulk <id>
+trecli enterprises put-enterprises-id-enterprisejoinrequest-bulk <id>
 ```
 
 Path arguments:
@@ -2547,7 +2547,7 @@ Query flags:
 Update a Member's licensed status
 
 ```bash
-trello-cli enterprises put-enterprises-id-members-idmember-licensed <id> <idMember>
+trecli enterprises put-enterprises-id-members-idmember-licensed <id> <idMember>
 ```
 
 Path arguments:
@@ -2566,7 +2566,7 @@ Query flags:
 Transfer an Organization to an Enterprise.
 
 ```bash
-trello-cli enterprises put-enterprises-id-organizations <id>
+trecli enterprises put-enterprises-id-organizations <id>
 ```
 
 Path arguments:
@@ -2588,7 +2588,7 @@ Query flags:
 Delete a Label
 
 ```bash
-trello-cli labels delete-labels-id <id>
+trecli labels delete-labels-id <id>
 ```
 
 Path arguments:
@@ -2602,7 +2602,7 @@ Path arguments:
 Get a Label
 
 ```bash
-trello-cli labels get-labels-id <id>
+trecli labels get-labels-id <id>
 ```
 
 Path arguments:
@@ -2620,7 +2620,7 @@ Query flags:
 Create a Label
 
 ```bash
-trello-cli labels post-labels
+trecli labels post-labels
 ```
 
 Query flags:
@@ -2636,7 +2636,7 @@ Query flags:
 Update a Label
 
 ```bash
-trello-cli labels put-labels-id <id>
+trecli labels put-labels-id <id>
 ```
 
 Path arguments:
@@ -2655,7 +2655,7 @@ Query flags:
 Update a field on a label
 
 ```bash
-trello-cli labels put-labels-id-field <id> <field>
+trecli labels put-labels-id-field <id> <field>
 ```
 
 Path arguments:
@@ -2678,7 +2678,7 @@ Query flags:
 Get a List
 
 ```bash
-trello-cli lists get-lists-id <id>
+trecli lists get-lists-id <id>
 ```
 
 Path arguments:
@@ -2696,7 +2696,7 @@ Query flags:
 Get Actions for a List
 
 ```bash
-trello-cli lists get-lists-id-actions <id>
+trecli lists get-lists-id-actions <id>
 ```
 
 Path arguments:
@@ -2714,7 +2714,7 @@ Query flags:
 Get the Board a List is on
 
 ```bash
-trello-cli lists get-lists-id-board <id>
+trecli lists get-lists-id-board <id>
 ```
 
 Path arguments:
@@ -2732,7 +2732,7 @@ Query flags:
 Get Cards in a List
 
 ```bash
-trello-cli lists get-lists-id-cards <id>
+trecli lists get-lists-id-cards <id>
 ```
 
 Path arguments:
@@ -2746,7 +2746,7 @@ Path arguments:
 Create a new List
 
 ```bash
-trello-cli lists post-lists
+trecli lists post-lists
 ```
 
 Query flags:
@@ -2763,7 +2763,7 @@ Query flags:
 Archive all Cards in List
 
 ```bash
-trello-cli lists post-lists-id-archiveallcards <id>
+trecli lists post-lists-id-archiveallcards <id>
 ```
 
 Path arguments:
@@ -2777,7 +2777,7 @@ Path arguments:
 Move all Cards in List
 
 ```bash
-trello-cli lists post-lists-id-moveallcards <id>
+trecli lists post-lists-id-moveallcards <id>
 ```
 
 Path arguments:
@@ -2796,7 +2796,7 @@ Query flags:
 Move List to Board
 
 ```bash
-trello-cli lists put-id-idboard <id>
+trecli lists put-id-idboard <id>
 ```
 
 Path arguments:
@@ -2814,7 +2814,7 @@ Query flags:
 Update a List
 
 ```bash
-trello-cli lists put-lists-id <id>
+trecli lists put-lists-id <id>
 ```
 
 Path arguments:
@@ -2836,7 +2836,7 @@ Query flags:
 Archive or unarchive a list
 
 ```bash
-trello-cli lists put-lists-id-closed <id>
+trecli lists put-lists-id-closed <id>
 ```
 
 Path arguments:
@@ -2854,7 +2854,7 @@ Query flags:
 Update a field on a List
 
 ```bash
-trello-cli lists put-lists-id-field <id> <field>
+trecli lists put-lists-id-field <id> <field>
 ```
 
 Path arguments:
@@ -2877,7 +2877,7 @@ Query flags:
 Delete a Member's custom Board background
 
 ```bash
-trello-cli members delete-members-id-boardbackgrounds-idbackground <id> <idBackground>
+trecli members delete-members-id-boardbackgrounds-idbackground <id> <idBackground>
 ```
 
 Path arguments:
@@ -2892,7 +2892,7 @@ Path arguments:
 Delete Star for Board
 
 ```bash
-trello-cli members delete-members-id-boardstars-idstar <id> <idStar>
+trecli members delete-members-id-boardstars-idstar <id> <idStar>
 ```
 
 Path arguments:
@@ -2907,7 +2907,7 @@ Path arguments:
 Delete custom Board Background of Member
 
 ```bash
-trello-cli members delete-members-id-customboardbackgrounds-idbackground <id> <idBackground>
+trecli members delete-members-id-customboardbackgrounds-idbackground <id> <idBackground>
 ```
 
 Path arguments:
@@ -2922,7 +2922,7 @@ Path arguments:
 Delete a Member's custom Sticker
 
 ```bash
-trello-cli members delete-members-id-customstickers-idsticker <id> <idSticker>
+trecli members delete-members-id-customstickers-idsticker <id> <idSticker>
 ```
 
 Path arguments:
@@ -2937,7 +2937,7 @@ Path arguments:
 Delete a saved search
 
 ```bash
-trello-cli members delete-members-id-savedsearches-idsearch <id> <idSearch>
+trecli members delete-members-id-savedsearches-idsearch <id> <idSearch>
 ```
 
 Path arguments:
@@ -2952,7 +2952,7 @@ Path arguments:
 Get a Member's Actions
 
 ```bash
-trello-cli members get-members-id-actions <id>
+trecli members get-members-id-actions <id>
 ```
 
 Path arguments:
@@ -2970,7 +2970,7 @@ Query flags:
 Get Member's custom Board backgrounds
 
 ```bash
-trello-cli members get-members-id-boardbackgrounds <id>
+trecli members get-members-id-boardbackgrounds <id>
 ```
 
 Path arguments:
@@ -2988,7 +2988,7 @@ Query flags:
 Get a boardBackground of a Member
 
 ```bash
-trello-cli members get-members-id-boardbackgrounds-idbackground <id> <idBackground>
+trecli members get-members-id-boardbackgrounds-idbackground <id> <idBackground>
 ```
 
 Path arguments:
@@ -3007,7 +3007,7 @@ Query flags:
 Get Boards that Member belongs to
 
 ```bash
-trello-cli members get-members-id-boards <id>
+trecli members get-members-id-boards <id>
 ```
 
 Path arguments:
@@ -3029,7 +3029,7 @@ Query flags:
 Get Boards the Member has been invited to
 
 ```bash
-trello-cli members get-members-id-boardsinvited <id>
+trecli members get-members-id-boardsinvited <id>
 ```
 
 Path arguments:
@@ -3047,7 +3047,7 @@ Query flags:
 Get a Member's boardStars
 
 ```bash
-trello-cli members get-members-id-boardstars <id>
+trecli members get-members-id-boardstars <id>
 ```
 
 Path arguments:
@@ -3061,7 +3061,7 @@ Path arguments:
 Get a boardStar of Member
 
 ```bash
-trello-cli members get-members-id-boardstars-idstar <id> <idStar>
+trecli members get-members-id-boardstars-idstar <id> <idStar>
 ```
 
 Path arguments:
@@ -3076,7 +3076,7 @@ Path arguments:
 Get Cards the Member is on
 
 ```bash
-trello-cli members get-members-id-cards <id>
+trecli members get-members-id-cards <id>
 ```
 
 Path arguments:
@@ -3094,7 +3094,7 @@ Query flags:
 Get a Member's custom Board Backgrounds
 
 ```bash
-trello-cli members get-members-id-customboardbackgrounds <id>
+trecli members get-members-id-customboardbackgrounds <id>
 ```
 
 Path arguments:
@@ -3108,7 +3108,7 @@ Path arguments:
 Get custom Board Background of Member
 
 ```bash
-trello-cli members get-members-id-customboardbackgrounds-idbackground <id> <idBackground>
+trecli members get-members-id-customboardbackgrounds-idbackground <id> <idBackground>
 ```
 
 Path arguments:
@@ -3123,7 +3123,7 @@ Path arguments:
 Get a Member's customEmojis
 
 ```bash
-trello-cli members get-members-id-customemoji <id>
+trecli members get-members-id-customemoji <id>
 ```
 
 Path arguments:
@@ -3137,7 +3137,7 @@ Path arguments:
 Get Member's custom Stickers
 
 ```bash
-trello-cli members get-members-id-customstickers <id>
+trecli members get-members-id-customstickers <id>
 ```
 
 Path arguments:
@@ -3151,7 +3151,7 @@ Path arguments:
 Get a Member's custom Sticker
 
 ```bash
-trello-cli members get-members-id-customstickers-idsticker <id> <idSticker>
+trecli members get-members-id-customstickers-idsticker <id> <idSticker>
 ```
 
 Path arguments:
@@ -3170,7 +3170,7 @@ Query flags:
 Get a field on a Member
 
 ```bash
-trello-cli members get-members-id-field <id> <field>
+trecli members get-members-id-field <id> <field>
 ```
 
 Path arguments:
@@ -3185,7 +3185,7 @@ Path arguments:
 Get a Member's notification channel settings
 
 ```bash
-trello-cli members get-members-id-notificationchannelsettings <id>
+trecli members get-members-id-notificationchannelsettings <id>
 ```
 
 Path arguments:
@@ -3199,7 +3199,7 @@ Path arguments:
 Get blocked notification keys of Member on this channel
 
 ```bash
-trello-cli members get-members-id-notificationchannelsettings-channel <id> <channel>
+trecli members get-members-id-notificationchannelsettings-channel <id> <channel>
 ```
 
 Path arguments:
@@ -3214,7 +3214,7 @@ Path arguments:
 Get Member's Notifications
 
 ```bash
-trello-cli members get-members-id-notifications <id>
+trecli members get-members-id-notifications <id>
 ```
 
 Path arguments:
@@ -3242,7 +3242,7 @@ Query flags:
 Get Member's Organizations
 
 ```bash
-trello-cli members get-members-id-organizations <id>
+trecli members get-members-id-organizations <id>
 ```
 
 Path arguments:
@@ -3262,7 +3262,7 @@ Query flags:
 Get Organizations a Member has been invited to
 
 ```bash
-trello-cli members get-members-id-organizationsinvited <id>
+trecli members get-members-id-organizationsinvited <id>
 ```
 
 Path arguments:
@@ -3280,7 +3280,7 @@ Query flags:
 Get Member's saved searched
 
 ```bash
-trello-cli members get-members-id-savedsearches <id>
+trecli members get-members-id-savedsearches <id>
 ```
 
 Path arguments:
@@ -3294,7 +3294,7 @@ Path arguments:
 Get a saved search
 
 ```bash
-trello-cli members get-members-id-savedsearches-idsearch <id> <idSearch>
+trecli members get-members-id-savedsearches-idsearch <id> <idSearch>
 ```
 
 Path arguments:
@@ -3309,7 +3309,7 @@ Path arguments:
 Get Member's Tokens
 
 ```bash
-trello-cli members get-members-id-tokens <id>
+trecli members get-members-id-tokens <id>
 ```
 
 Path arguments:
@@ -3327,7 +3327,7 @@ Query flags:
 Get a Member
 
 ```bash
-trello-cli members get-members=id <id>
+trecli members get-members=id <id>
 ```
 
 Path arguments:
@@ -3364,7 +3364,7 @@ Query flags:
 Create Avatar for Member
 
 ```bash
-trello-cli members membersidavatar <id>
+trecli members membersidavatar <id>
 ```
 
 Path arguments:
@@ -3382,7 +3382,7 @@ Query flags:
 Create a new custom Board Background
 
 ```bash
-trello-cli members membersidcustomboardbackgrounds-1 <id>
+trecli members membersidcustomboardbackgrounds-1 <id>
 ```
 
 Path arguments:
@@ -3400,7 +3400,7 @@ Query flags:
 Get a Member's custom Emoji
 
 ```bash
-trello-cli members membersidcustomemojiidemoji <id> <idEmoji>
+trecli members membersidcustomemojiidemoji <id> <idEmoji>
 ```
 
 Path arguments:
@@ -3419,7 +3419,7 @@ Query flags:
 Upload new boardBackground for Member
 
 ```bash
-trello-cli members post-members-id-boardbackgrounds-1 <id>
+trecli members post-members-id-boardbackgrounds-1 <id>
 ```
 
 Path arguments:
@@ -3437,7 +3437,7 @@ Query flags:
 Create Star for Board
 
 ```bash
-trello-cli members post-members-id-boardstars <id>
+trecli members post-members-id-boardstars <id>
 ```
 
 Path arguments:
@@ -3456,7 +3456,7 @@ Query flags:
 Create custom Emoji for Member
 
 ```bash
-trello-cli members post-members-id-customemoji <id>
+trecli members post-members-id-customemoji <id>
 ```
 
 Path arguments:
@@ -3475,7 +3475,7 @@ Query flags:
 Create custom Sticker for Member
 
 ```bash
-trello-cli members post-members-id-customstickers <id>
+trecli members post-members-id-customstickers <id>
 ```
 
 Path arguments:
@@ -3493,7 +3493,7 @@ Query flags:
 Dismiss a message for Member
 
 ```bash
-trello-cli members post-members-id-onetimemessagesdismissed <id>
+trecli members post-members-id-onetimemessagesdismissed <id>
 ```
 
 Path arguments:
@@ -3511,7 +3511,7 @@ Query flags:
 Create saved Search for Member
 
 ```bash
-trello-cli members post-members-id-savedsearches <id>
+trecli members post-members-id-savedsearches <id>
 ```
 
 Path arguments:
@@ -3531,7 +3531,7 @@ Query flags:
 Update a Member
 
 ```bash
-trello-cli members put-members-id <id>
+trecli members put-members-id <id>
 ```
 
 Path arguments:
@@ -3556,7 +3556,7 @@ Query flags:
 Update a Member's custom Board background
 
 ```bash
-trello-cli members put-members-id-boardbackgrounds-idbackground <id> <idBackground>
+trecli members put-members-id-boardbackgrounds-idbackground <id> <idBackground>
 ```
 
 Path arguments:
@@ -3576,7 +3576,7 @@ Query flags:
 Update the position of a boardStar of Member
 
 ```bash
-trello-cli members put-members-id-boardstars-idstar <id> <idStar>
+trecli members put-members-id-boardstars-idstar <id> <idStar>
 ```
 
 Path arguments:
@@ -3595,7 +3595,7 @@ Query flags:
 Update custom Board Background of Member
 
 ```bash
-trello-cli members put-members-id-customboardbackgrounds-idbackground <id> <idBackground>
+trecli members put-members-id-customboardbackgrounds-idbackground <id> <idBackground>
 ```
 
 Path arguments:
@@ -3615,7 +3615,7 @@ Query flags:
 Update blocked notification keys of Member on a channel
 
 ```bash
-trello-cli members put-members-id-notificationchannelsettings <id>
+trecli members put-members-id-notificationchannelsettings <id>
 ```
 
 Path arguments:
@@ -3631,7 +3631,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Update blocked notification keys of Member on a channel
 
 ```bash
-trello-cli members put-members-id-notificationchannelsettings-channel <id> <channel>
+trecli members put-members-id-notificationchannelsettings-channel <id> <channel>
 ```
 
 Path arguments:
@@ -3648,7 +3648,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Update a saved search
 
 ```bash
-trello-cli members put-members-id-savedsearches-idsearch <id> <idSearch>
+trecli members put-members-id-savedsearches-idsearch <id> <idSearch>
 ```
 
 Path arguments:
@@ -3673,7 +3673,7 @@ Query flags:
 Get a Notification
 
 ```bash
-trello-cli notifications get-notifications-id <id>
+trecli notifications get-notifications-id <id>
 ```
 
 Path arguments:
@@ -3704,7 +3704,7 @@ Query flags:
 Get the Board a Notification is on
 
 ```bash
-trello-cli notifications get-notifications-id-board <id>
+trecli notifications get-notifications-id-board <id>
 ```
 
 Path arguments:
@@ -3722,7 +3722,7 @@ Query flags:
 Get the Card a Notification is on
 
 ```bash
-trello-cli notifications get-notifications-id-card <id>
+trecli notifications get-notifications-id-card <id>
 ```
 
 Path arguments:
@@ -3740,7 +3740,7 @@ Query flags:
 Get a field of a Notification
 
 ```bash
-trello-cli notifications get-notifications-id-field <id> <field>
+trecli notifications get-notifications-id-field <id> <field>
 ```
 
 Path arguments:
@@ -3755,7 +3755,7 @@ Path arguments:
 Get the List a Notification is on
 
 ```bash
-trello-cli notifications get-notifications-id-list <id>
+trecli notifications get-notifications-id-list <id>
 ```
 
 Path arguments:
@@ -3773,7 +3773,7 @@ Query flags:
 Get the Member who created the Notification
 
 ```bash
-trello-cli notifications get-notifications-id-membercreator <id>
+trecli notifications get-notifications-id-membercreator <id>
 ```
 
 Path arguments:
@@ -3791,7 +3791,7 @@ Query flags:
 Get a Notification's associated Organization
 
 ```bash
-trello-cli notifications get-notifications-id-organization <id>
+trecli notifications get-notifications-id-organization <id>
 ```
 
 Path arguments:
@@ -3809,7 +3809,7 @@ Query flags:
 Get the Member a Notification is about (not the creator)
 
 ```bash
-trello-cli notifications notificationsidmember <id>
+trecli notifications notificationsidmember <id>
 ```
 
 Path arguments:
@@ -3827,7 +3827,7 @@ Query flags:
 Mark all Notifications as read
 
 ```bash
-trello-cli notifications post-notifications-all-read
+trecli notifications post-notifications-all-read
 ```
 
 Query flags:
@@ -3842,7 +3842,7 @@ Query flags:
 Update a Notification's read status
 
 ```bash
-trello-cli notifications put-notifications-id <id>
+trecli notifications put-notifications-id <id>
 ```
 
 Path arguments:
@@ -3860,7 +3860,7 @@ Query flags:
 Update Notification's read status
 
 ```bash
-trello-cli notifications put-notifications-id-unread <id>
+trecli notifications put-notifications-id-unread <id>
 ```
 
 Path arguments:
@@ -3882,7 +3882,7 @@ Query flags:
 Delete an Organization
 
 ```bash
-trello-cli organizations delete-organizations-id <id>
+trecli organizations delete-organizations-id <id>
 ```
 
 Path arguments:
@@ -3896,7 +3896,7 @@ Path arguments:
 Delete Logo for Organization
 
 ```bash
-trello-cli organizations delete-organizations-id-logo <id>
+trecli organizations delete-organizations-id-logo <id>
 ```
 
 Path arguments:
@@ -3910,7 +3910,7 @@ Path arguments:
 Remove a Member from an Organization
 
 ```bash
-trello-cli organizations delete-organizations-id-members <id> <idMember>
+trecli organizations delete-organizations-id-members <id> <idMember>
 ```
 
 Path arguments:
@@ -3925,7 +3925,7 @@ Path arguments:
 Remove the associated Google Apps domain from a Workspace
 
 ```bash
-trello-cli organizations delete-organizations-id-prefs-associateddomain <id>
+trecli organizations delete-organizations-id-prefs-associateddomain <id>
 ```
 
 Path arguments:
@@ -3939,7 +3939,7 @@ Path arguments:
 Delete the email domain restriction on who can be invited to the Workspace
 
 ```bash
-trello-cli organizations delete-organizations-id-prefs-orginviterestrict <id>
+trecli organizations delete-organizations-id-prefs-orginviterestrict <id>
 ```
 
 Path arguments:
@@ -3953,7 +3953,7 @@ Path arguments:
 Delete an Organization's Tag
 
 ```bash
-trello-cli organizations delete-organizations-id-tags-idtag <id> <idTag>
+trecli organizations delete-organizations-id-tags-idtag <id> <idTag>
 ```
 
 Path arguments:
@@ -3968,7 +3968,7 @@ Path arguments:
 Get an Organization
 
 ```bash
-trello-cli organizations get-organizations-id <id>
+trecli organizations get-organizations-id <id>
 ```
 
 Path arguments:
@@ -3982,7 +3982,7 @@ Path arguments:
 Get Actions for Organization
 
 ```bash
-trello-cli organizations get-organizations-id-actions <id>
+trecli organizations get-organizations-id-actions <id>
 ```
 
 Path arguments:
@@ -3996,7 +3996,7 @@ Path arguments:
 Get Boards in an Organization
 
 ```bash
-trello-cli organizations get-organizations-id-boards <id>
+trecli organizations get-organizations-id-boards <id>
 ```
 
 Path arguments:
@@ -4015,7 +4015,7 @@ Query flags:
 Retrieve Organization's Exports
 
 ```bash
-trello-cli organizations get-organizations-id-exports <id>
+trecli organizations get-organizations-id-exports <id>
 ```
 
 Path arguments:
@@ -4029,7 +4029,7 @@ Path arguments:
 Get field on Organization
 
 ```bash
-trello-cli organizations get-organizations-id-field <id> <field>
+trecli organizations get-organizations-id-field <id> <field>
 ```
 
 Path arguments:
@@ -4044,7 +4044,7 @@ Path arguments:
 Get the Members of an Organization
 
 ```bash
-trello-cli organizations get-organizations-id-members <id>
+trecli organizations get-organizations-id-members <id>
 ```
 
 Path arguments:
@@ -4058,7 +4058,7 @@ Path arguments:
 Get Memberships of an Organization
 
 ```bash
-trello-cli organizations get-organizations-id-memberships <id>
+trecli organizations get-organizations-id-memberships <id>
 ```
 
 Path arguments:
@@ -4077,7 +4077,7 @@ Query flags:
 Get a Membership of an Organization
 
 ```bash
-trello-cli organizations get-organizations-id-memberships-idmembership <id> <idMembership>
+trecli organizations get-organizations-id-memberships-idmembership <id> <idMembership>
 ```
 
 Path arguments:
@@ -4096,7 +4096,7 @@ Query flags:
 Get Organizations new billable guests
 
 ```bash
-trello-cli organizations get-organizations-id-newbillableguests-idboard <id> <idBoard>
+trecli organizations get-organizations-id-newbillableguests-idboard <id> <idBoard>
 ```
 
 Path arguments:
@@ -4111,7 +4111,7 @@ Path arguments:
 Get the pluginData Scoped to Organization
 
 ```bash
-trello-cli organizations get-organizations-id-plugindata <id>
+trecli organizations get-organizations-id-plugindata <id>
 ```
 
 Path arguments:
@@ -4125,7 +4125,7 @@ Path arguments:
 Get Tags of an Organization
 
 ```bash
-trello-cli organizations get-organizations-id-tags <id>
+trecli organizations get-organizations-id-tags <id>
 ```
 
 Path arguments:
@@ -4139,7 +4139,7 @@ Path arguments:
 Remove a Member from an Organization and all Organization Boards
 
 ```bash
-trello-cli organizations organizations-id-members-idmember-all <id> <idMember>
+trecli organizations organizations-id-members-idmember-all <id> <idMember>
 ```
 
 Path arguments:
@@ -4154,7 +4154,7 @@ Path arguments:
 Create a new Organization
 
 ```bash
-trello-cli organizations post-organizations
+trecli organizations post-organizations
 ```
 
 Query flags:
@@ -4171,7 +4171,7 @@ Query flags:
 Create Export for Organizations
 
 ```bash
-trello-cli organizations post-organizations-id-exports <id>
+trecli organizations post-organizations-id-exports <id>
 ```
 
 Path arguments:
@@ -4189,7 +4189,7 @@ Query flags:
 Update logo for an Organization
 
 ```bash
-trello-cli organizations post-organizations-id-logo <id>
+trecli organizations post-organizations-id-logo <id>
 ```
 
 Path arguments:
@@ -4207,7 +4207,7 @@ Query flags:
 Create a Tag in Organization
 
 ```bash
-trello-cli organizations post-organizations-id-tags <id>
+trecli organizations post-organizations-id-tags <id>
 ```
 
 Path arguments:
@@ -4221,7 +4221,7 @@ Path arguments:
 Update an Organization
 
 ```bash
-trello-cli organizations put-organizations-id <id>
+trecli organizations put-organizations-id <id>
 ```
 
 Path arguments:
@@ -4250,7 +4250,7 @@ Query flags:
 Update an Organization's Members
 
 ```bash
-trello-cli organizations put-organizations-id-members <id>
+trecli organizations put-organizations-id-members <id>
 ```
 
 Path arguments:
@@ -4270,7 +4270,7 @@ Query flags:
 Update a Member of an Organization
 
 ```bash
-trello-cli organizations put-organizations-id-members-idmember <id> <idMember>
+trecli organizations put-organizations-id-members-idmember <id> <idMember>
 ```
 
 Path arguments:
@@ -4289,7 +4289,7 @@ Query flags:
 Deactivate or reactivate a member of an Organization
 
 ```bash
-trello-cli organizations put-organizations-id-members-idmember-deactivated <id> <idMember>
+trecli organizations put-organizations-id-members-idmember-deactivated <id> <idMember>
 ```
 
 Path arguments:
@@ -4312,7 +4312,7 @@ Query flags:
 Get a Plugin
 
 ```bash
-trello-cli plugins get-plugins-id <id>
+trecli plugins get-plugins-id <id>
 ```
 
 Path arguments:
@@ -4326,7 +4326,7 @@ Path arguments:
 Get Plugin's Member privacy compliance
 
 ```bash
-trello-cli plugins get-plugins-id-compliance-memberprivacy <id>
+trecli plugins get-plugins-id-compliance-memberprivacy <id>
 ```
 
 Path arguments:
@@ -4340,7 +4340,7 @@ Path arguments:
 Create a Listing for Plugin
 
 ```bash
-trello-cli plugins post-plugins-idplugin-listing <idPlugin>
+trecli plugins post-plugins-idplugin-listing <idPlugin>
 ```
 
 Path arguments:
@@ -4356,7 +4356,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Update a Plugin
 
 ```bash
-trello-cli plugins put-plugins-id <id>
+trecli plugins put-plugins-id <id>
 ```
 
 Path arguments:
@@ -4370,7 +4370,7 @@ Path arguments:
 Updating Plugin's Listing
 
 ```bash
-trello-cli plugins put-plugins-idplugin-listings-idlisting <idPlugin> <idListing>
+trecli plugins put-plugins-idplugin-listings-idlisting <idPlugin> <idListing>
 ```
 
 Path arguments:
@@ -4391,7 +4391,7 @@ Body: `--data <json|@file>` (optional JSON request body).
 Search Trello
 
 ```bash
-trello-cli search get-search
+trecli search get-search
 ```
 
 Query flags:
@@ -4425,7 +4425,7 @@ Query flags:
 Search for Members
 
 ```bash
-trello-cli search get-search-members
+trecli search get-search-members
 ```
 
 Query flags:
@@ -4447,7 +4447,7 @@ Query flags:
 Delete a Token
 
 ```bash
-trello-cli tokens delete-token <token>
+trecli tokens delete-token <token>
 ```
 
 Path arguments:
@@ -4461,7 +4461,7 @@ Path arguments:
 Delete a Webhook created by Token
 
 ```bash
-trello-cli tokens delete-tokens-token-webhooks-idwebhook <token> <idWebhook>
+trecli tokens delete-tokens-token-webhooks-idwebhook <token> <idWebhook>
 ```
 
 Path arguments:
@@ -4476,7 +4476,7 @@ Path arguments:
 Get a Token
 
 ```bash
-trello-cli tokens get-tokens-token <token>
+trecli tokens get-tokens-token <token>
 ```
 
 Path arguments:
@@ -4495,7 +4495,7 @@ Query flags:
 Get Token's Member
 
 ```bash
-trello-cli tokens get-tokens-token-member <token>
+trecli tokens get-tokens-token-member <token>
 ```
 
 Path arguments:
@@ -4513,7 +4513,7 @@ Query flags:
 Get Webhooks for Token
 
 ```bash
-trello-cli tokens get-tokens-token-webhooks <token>
+trecli tokens get-tokens-token-webhooks <token>
 ```
 
 Path arguments:
@@ -4527,7 +4527,7 @@ Path arguments:
 Get a Webhook belonging to a Token
 
 ```bash
-trello-cli tokens get-tokens-token-webhooks-idwebhook <token> <idWebhook>
+trecli tokens get-tokens-token-webhooks-idwebhook <token> <idWebhook>
 ```
 
 Path arguments:
@@ -4542,7 +4542,7 @@ Path arguments:
 Create Webhooks for Token
 
 ```bash
-trello-cli tokens post-tokens-token-webhooks <token>
+trecli tokens post-tokens-token-webhooks <token>
 ```
 
 Path arguments:
@@ -4562,7 +4562,7 @@ Query flags:
 Update a Webhook created by Token
 
 ```bash
-trello-cli tokens tokenstokenwebhooks-1 <token> <idWebhook>
+trecli tokens tokenstokenwebhooks-1 <token> <idWebhook>
 ```
 
 Path arguments:
@@ -4587,7 +4587,7 @@ Query flags:
 Delete a Webhook
 
 ```bash
-trello-cli webhooks delete-webhooks-id <id>
+trecli webhooks delete-webhooks-id <id>
 ```
 
 Path arguments:
@@ -4601,7 +4601,7 @@ Path arguments:
 Get a Webhook
 
 ```bash
-trello-cli webhooks get-webhooks-id <id>
+trecli webhooks get-webhooks-id <id>
 ```
 
 Path arguments:
@@ -4615,7 +4615,7 @@ Path arguments:
 Create a Webhook
 
 ```bash
-trello-cli webhooks post-webhooks
+trecli webhooks post-webhooks
 ```
 
 Query flags:
@@ -4632,7 +4632,7 @@ Query flags:
 Update a Webhook
 
 ```bash
-trello-cli webhooks put-webhooks-id <id>
+trecli webhooks put-webhooks-id <id>
 ```
 
 Path arguments:
@@ -4653,7 +4653,7 @@ Query flags:
 Get a field on a Webhook
 
 ```bash
-trello-cli webhooks webhooksidfield <id> <field>
+trecli webhooks webhooksidfield <id> <field>
 ```
 
 Path arguments:

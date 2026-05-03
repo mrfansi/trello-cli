@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mrfansi/trello-cli/internal/commands"
+	"github.com/mrfansi/trecli/internal/commands"
 )
 
 func main() {

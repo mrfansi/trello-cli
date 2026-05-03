@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/mrfansi/trello-cli/internal/config"
-	"github.com/mrfansi/trello-cli/internal/trello"
+	"github.com/mrfansi/trecli/internal/config"
+	"github.com/mrfansi/trecli/internal/trello"
 )
 
 func New(cfg *config.Config) (*trello.Client, error) {

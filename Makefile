@@ -1,6 +1,6 @@
 BIN_DIR  := bin
-BIN      := $(BIN_DIR)/trello-cli
-CMD      := ./cmd/trello-cli
+BIN      := $(BIN_DIR)/trecli
+CMD      := ./cmd/trecli
 SPEC     := openapi.json
 CLIENT   := internal/trello/client.gen.go
 
@@ -8,7 +8,7 @@ VERSION  ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo dev
 COMMIT   ?= $(shell git rev-parse --short HEAD 2>/dev/null || echo none)
 DATE     ?= $(shell date -u +%Y-%m-%dT%H:%M:%SZ)
 
-PKG      := github.com/mrfansi/trello-cli/internal/version
+PKG      := github.com/mrfansi/trecli/internal/version
 LDFLAGS  := -X $(PKG).Version=$(VERSION) -X $(PKG).Commit=$(COMMIT) -X $(PKG).Date=$(DATE)
 
 GOFLAGS  ?=
@@ -20,7 +20,7 @@ GOFLAGS  ?=
 help: ## Show this help
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make <target>\n\nTargets:\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-12s\033[0m %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
 
-build: ## Build the binary into ./bin/trello-cli
+build: ## Build the binary into ./bin/trecli
 	@mkdir -p $(BIN_DIR)
 	go build $(GOFLAGS) -ldflags "$(LDFLAGS)" -o $(BIN) $(CMD)
 	@echo "built $(BIN) ($(VERSION))"

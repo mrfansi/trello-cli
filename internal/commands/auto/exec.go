@@ -10,9 +10,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mrfansi/trello-cli/internal/client"
-	"github.com/mrfansi/trello-cli/internal/cmdutil"
-	"github.com/mrfansi/trello-cli/internal/config"
+	"github.com/mrfansi/trecli/internal/client"
+	"github.com/mrfansi/trecli/internal/cmdutil"
+	"github.com/mrfansi/trecli/internal/config"
 	"github.com/spf13/cobra"
 )
 
